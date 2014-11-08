@@ -4,7 +4,7 @@ include '../init.php';
 
 function ebac($sum, $gender, $weight, $DP){
     $BW = ($gender == "female") ? 0.49 : 0.58;
-    $MR = 0.017;
+    $MR = ($gender == "female") ? 0.017 : 0.015;
 
     $top = 0.806 * (1/12.7) * $sum * 1.2;
     $bot = $BW * $weight;
@@ -39,23 +39,47 @@ function calcSum($sessionid){
 
     $sd = $sum;
     return array(
-        "SD" => $sum,
+        "sum" => $sum,
         "TIME" => $start);
 }
 
-$newDrink = array("sessdr_volume" => 100, "drink_percentage" => 0.5);
+$sessionid = 1;
+$drinkid = 1;
+$volume = 100;
+
+// get the percentage of the drink from the database
+$per = DB::get()->prepare("SELECT drink_percent FROM drink WHERE drink_id = ?" );
+$per->bindValue(1, $drinkid, PDO::PARAM_INT);
+$per->execute();
+$percent = $per->fetch(PDO::FETCH_ASSOC)['drink_percent'];
 
 $oSum = calcSum(1);
-$time = (time()-$oSum["TIME"]) / 60;
-$oldEbac = ebac($oSum["SD"], Logins::getCurrentUserGender(), Logins::getCurrentUserWeight(), $time);
-/*
+$time = (time()-$oSum["TIME"]) / (60*60);
+
+$oldEbac = ebac($oSum["sum"], Logins::getCurrentUserGender(), Logins::getCurrentUserWeight(), $time);
+
 // if old ebac less than 0, set start time to current time
-if ($oldEbac <= 0) $time = 0;
+if ($oldEbac <= 0){
+    $time = 0;
+    $oldEbac = 0;
+    $oSum["sum"] = 0;
+}
 
 // find new sum
-$nSum = $oSum["SD"] + floatval($newDrink['sessdr_volume']) * floatval($newDrink['drink_percentage']);
+$nSum = $oSum["sum"] + floatval($volume) * floatval($percent);
 
 // calculate new ebac
-$newEbac = ebac($nSum["SD"], Logins::getCurrentUserGender(), Logins::getCurrentUserWeight(), $time);
-*/
-echo $oldEbac;//. ' ' . $newEbac;
+$newEbac = ebac($nSum, Logins::getCurrentUserGender(), Logins::getCurrentUserWeight(), $time);
+
+
+$stmt = DB::get()->prepare("INSERT INTO sessiondrink
+    (sessdr_session_id, sessdr_drink_id, sessdr_volume, sessdr_ebac_before, sessdr_ebac_after)
+    VALUES (?, ?, ?, ?, ?)");
+$stmt->bindValue(1, $sessionid, PDO::PARAM_INT);
+$stmt->bindValue(2, $drinkid, PDO::PARAM_INT);
+$stmt->bindValue(3, $volume, PDO::PARAM_INT);
+$stmt->bindValue(4, $oldEbac, PDO::PARAM_STR);
+$stmt->bindValue(5, $newEbac, PDO::PARAM_STR);
+$stmt->execute();
+
+echo $oldEbac . '<br/>' . $newEbac;

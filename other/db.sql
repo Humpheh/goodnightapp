@@ -3,7 +3,8 @@ CREATE TABLE user (
     user_username VARCHAR(20) NOT NULL,
     user_password VARCHAR(100) NOT NULL,
     user_weight INT NULL,
-    user_gender ENUM('none', 'male', 'female')
+    user_gender ENUM('none', 'male', 'female'),
+    user_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=INNODB;
 
 CREATE TABLE session (
@@ -31,5 +32,9 @@ CREATE TABLE sessiondrink (
     sessdr_id SERIAL,
     sessdr_session_id BIGINT UNSIGNED,
     sessdr_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+<<<<<<< HEAD
     sessdr_volume INT 
+=======
+    sessdr_volume INT
+>>>>>>> f0b4bbe8e8dbfcbb64da0635ad7941dcab39771d
 ) ENGINE=INNODB;

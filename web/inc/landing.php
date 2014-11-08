@@ -1,4 +1,10 @@
-<div style="height:50%;">
+<div style="height:8%;background:rgb(60,60,60);color:white;" class="valign" >
+    <div style="padding-left:15px;">
+        You are logged in as <?php echo Logins::getCurrentUsername(); ?>.
+        <a href="logout.php" class="btn btn-primary" style="margin-left:10px;">Logout</a>
+    </div>
+</div>
+<div style="height:42%;">
     <a href="action/newsession.php" style="background:brown;display:table;width:100%;height:100%;text-align:center;">
         <span style="color:white;display:table-cell;vertical-align:middle;font-size:80px;" class="glyphicon glyphicon-plus"></span>
     </a>
@@ -43,4 +49,3 @@
         <?php
     } ?>
 </div>
-    You are logged in as <?php echo Logins::getCurrentUsername(); ?>. <a href="logout.php">Logout</a>

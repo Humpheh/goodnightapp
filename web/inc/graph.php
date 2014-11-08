@@ -1,5 +1,4 @@
 <div id="drunkChart" style=""></div>
-<script src="js/plotting/jquery.min.js"></script>
 <script src="js/plotting/jquery.jqplot.js"></script>
 <script src="js/plotting/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script src="js/plotting/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>

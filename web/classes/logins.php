@@ -112,4 +112,12 @@ class Logins {
         if (!Logins::isLoggedIn()) return false;
         return $_SESSION['user']['user_username'];
     }
+
+    /**
+     * Get the current userid.
+     */
+    public static function getCurrentUserID(){
+        if (!Logins::isLoggedIn()) return false;
+        return $_SESSION['user']['user_id'];
+    }
 }

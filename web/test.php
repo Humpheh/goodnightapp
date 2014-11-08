@@ -86,15 +86,6 @@ $("document").ready(function() {
   font-size:32px;
   font-weight:700;} 
 </style>
-</head>
-<body>
-<?php include '../includes/header.php';
-        $link = '| <a href="http://papermashup.com/jquery-page-scrolling/">Back To Tutorial</a>';
-?>
-<h1>jQuery Offset Animation</h1>
-
-<div class="main">
-
 
 <div class="top">
 
@@ -124,65 +115,6 @@ $("document").ready(function() {
 
 </div>
 
-<?php include '../includes/footer.php';?>
-
-</body>
-</html>
-
-
-<?php
-
-include 'init.php';
-
-require 'header.php';
-
-if(Logins::isLoggedIn()){
-    include 'inc/session.php';
-} else { 
-
-    // form has been submitted
-if (!empty($_POST['password']) && !empty($_POST['username'])){
-    $userpass = $_POST['password'];
-    $username = $_POST['username'];
-
-    // try to login
-    if (Logins::login($username, $userpass)){
-        header("Location: index.php");
-        exit();
-    }
-} ?>
-	<meta charset="utf-8">
-
-      <script>$("document").ready(function() {
- 
-                $('#loginBtn').click(function(){
- 
-                    $('html, body').animate({
-                        scrollTop: $("#loginSection").offset().top
-                    }, 2000);
- 
-                 });
- 
-});
-</script>
-
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script type="text/javascript" src="js/jquery.onepage-scroll.js"></script>
-  <link href='cs/onepage-scroll.css' rel='stylesheet' type='text/css'>
-  <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
-
-</head>
-<body>
-  <div class="wrapper">
-	  <div class="main">
-	    
-        
-	    
-	      <div id="loginSection" class="container">
-                
-            </div>
-    </div>
-  </div>
 
 <?php }
 require 'footer.php'; ?>

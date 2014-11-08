@@ -30,23 +30,21 @@ if (   !empty($_POST['password']) && !empty($_POST['username'])
 
 ?>
 
-<html>
-<head>
-    <title>Register</title>
-</head>
-<body>
-    Register
-    <form method="POST">
-        <input type="text" name="username" placeholder="username" />
-        <input type="password" name="password" placeholder="password" />
+<?php require 'header.php'; ?>
 
-        <input type="text" name="weight" placeholder="weight" />
-        <select name="gender">
-            <option value="none">-</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
-        <input type="submit" name="register" />
-    </form>
-</body>
-</html>
+<h1>Register</h1>
+
+<form method="POST">
+    <input type="text" name="username" placeholder="username" />
+    <input type="password" name="password" placeholder="password" />
+
+    <input type="text" name="weight" placeholder="weight" />
+    <select name="gender">
+        <option value="none">-</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <input type="submit" name="register" />
+</form>
+
+<?php require 'footer.php'; ?>

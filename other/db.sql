@@ -23,6 +23,7 @@ CREATE TABLE drink (
     drink_id SERIAL,
     drink_name VARCHAR(100) NOT NULL,
     drink_percent FLOAT NOT NULL,
+    drink_congener FLOAT NULL,
     drink_picture VARCHAR(200) NULL,
     drink_calories INT
 ) ENGINE=INNODB;

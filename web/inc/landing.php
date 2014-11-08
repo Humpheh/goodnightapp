@@ -18,7 +18,8 @@
 <div style="height:50%;overflow:scroll;" class="session-list">
     <?php
 
-    $stmt = DB::get()->prepare("SELECT * FROM session WHERE session_user_id = ?");
+    $stmt = DB::get()->prepare("SELECT * FROM session WHERE session_user_id = ?
+        ORDER BY session_timestart DESC");
     $stmt->bindValue(1, Logins::getCurrentUserID(), PDO::PARAM_INT);
     $stmt->execute();
 
@@ -29,7 +30,7 @@
         ?>
 
         <div class="row session valign">
-            <div class="col-xs-9" style="padding:0;">
+            <div class="col-xs-9" style="padding:0;color:white;">
                 <span style="font-size:30px;line-height:0.95em;"><?php echo $date; ?></span><br/>
                 <?php echo $time; ?>
             </div>

@@ -15,11 +15,11 @@ hey
     position: relative;
 }
 .drink-acceptor.hover{
-    border: 4px solid blue;
+    border: 4px solid rgb(60, 60, 170);
+    opacity: 1;
 }
 .drink-acceptor.active{
     border: 15px solid white;
-    opacity: 1;
 }
 
 .drink-acceptor{
@@ -27,10 +27,8 @@ hey
     width: 50%;
     height: 100%;
     top: 0;
-    -webkit-transition: border ease-in-out 0.25s;
-    transition: border ease-in-out 0.25s;
-    -webkit-transition: opacity ease-in-out 0.15s;
-    transition: opacity ease-in-out 0.15s;
+    -webkit-transition: border ease-in-out 0.25s, opacity ease-in-out 0.15s;
+    transition: border ease-in-out 0.25s, opacity ease-in-out 0.15s;
     border: 0 solid black;
     opacity: 0;
 }

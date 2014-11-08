@@ -25,7 +25,11 @@ CREATE TABLE drink (
     drink_percent FLOAT NOT NULL,
     drink_congener FLOAT NULL,
     drink_picture VARCHAR(200) NULL,
-    drink_calories INT
+    drink_calories INT,
+    drink_type1 VARCHAR(100) NULL,
+    drink_type2 VARCHAR(100) NULL,
+    drink_type1_ml FLOAT NULL,
+    drink_type2_ml FLOAT NULL
 ) ENGINE=INNODB;
 
 CREATE TABLE sessiondrink (

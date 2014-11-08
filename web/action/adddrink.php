@@ -34,7 +34,7 @@ function calcSum($sessionid){
             $start = strtotime($row['sessdr_time']);
             $sum = 0;
         }
-        $sum += floatval($row['sessdr_volume']) * floatval($row['drink_percent']);
+        $sum += floatval($row['sessdr_volume']) * (floatval($row['drink_percent']) / 100);
     }
 
     $sd = $sum;
@@ -51,7 +51,7 @@ $volume = 100;
 $per = DB::get()->prepare("SELECT drink_percent FROM drink WHERE drink_id = ?" );
 $per->bindValue(1, $drinkid, PDO::PARAM_INT);
 $per->execute();
-$percent = $per->fetch(PDO::FETCH_ASSOC)['drink_percent'];
+$percent = floatval($per->fetch(PDO::FETCH_ASSOC)['drink_percent']) / 100;
 
 $oSum = calcSum(1);
 $time = (time()-$oSum["TIME"]) / (60*60);

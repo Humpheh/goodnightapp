@@ -23,3 +23,11 @@ $example = array(
         "drink_percentage" => 0.2
     )
 );
+
+$jsonExample = json_encode($example);
+
+header('Cache-Control: no-cache, must-revalidate');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+header('Content-type: application/json');
+
+echo($jsonExample);

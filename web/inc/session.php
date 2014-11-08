@@ -1,5 +1,5 @@
 <div class="graph-holder">
-    Graph goes here...
+    <?php include 'graph.php' ?>
     <div id="acc-left" class="drink-acceptor vhalign" style="left:0;">
         <span class="text">1/2 Pint</span><br/>
         <span class="ml">300ml</span>

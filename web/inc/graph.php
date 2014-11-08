@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Test Plotting</title>
-</head>
-<body>
 <div id="drunkChart" style=""></div>
-
 <script src="js/plotting/jquery.min.js"></script>
 <script src="js/plotting/jquery.jqplot.js"></script>
 <script src="js/plotting/plugins/jqplot.canvasTextRenderer.min.js"></script>
@@ -20,7 +13,14 @@
     $(document).ready(function() {
         var graph = DrunkGraph('drunkChart');
         graph.draw();
+        //DrunkGraph('hangoverChart').draw();
     });
 </script>
-</body>
-</html>
+
+<?php
+/**
+ * Created by PhpStorm.
+ * User: kostja
+ * Date: 11/8/14
+ * Time: 11:21 PM
+ */ 

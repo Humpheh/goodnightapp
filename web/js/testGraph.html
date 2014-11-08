@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Plotting</title>
+</head>
+<body>
+<div id="drunkChart" style=""></div>
+
+<script src="plotting/jquery.min.js"></script>
+<script src="plotting/jquery.jqplot.js"></script>
+<script src="plotting/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script src="plotting/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script src="plotting/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script src="plotting/plugins/jqplot.pointLabels.js"></script>
+<script type="text/javascript" src="plotting/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="plotting/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="plotting/plugins/jqplot.barRenderer.min.js"></script>
+<script src="graph.js"></script>
+<script>
+    $(document).ready(function() {
+        var graph = DrunkGraph('drunkChart');
+        graph.drawGraph();
+    });
+</script>
+</body>
+</html>

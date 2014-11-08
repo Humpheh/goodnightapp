@@ -7,6 +7,5 @@ if (Logins::isLoggedIn()){
 	echo $_GET['callback'] . '(' . "{'response' : 'SUCCESS'}" . ')';
 }
 
-mysqli_close($con);
 
 ?>

@@ -18,7 +18,7 @@
 <div style="height:50%;overflow:scroll;" class="session-list">
     <?php
 
-    $stmt = DB::get()->prepare("SELECT * FROM session WHERE session_user = ?");
+    $stmt = DB::get()->prepare("SELECT * FROM session WHERE session_user_id = ?");
     $stmt->bindValue(1, Logins::getCurrentUserID(), PDO::PARAM_INT);
     $stmt->execute();
 
@@ -26,7 +26,6 @@
         $timestamp = strtotime($row['session_timestart']);
         $time = date("D jS M Y", $timestamp);
         $date = date("H:i", $timestamp);
-
         ?>
 
         <div class="row session valign">

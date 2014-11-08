@@ -155,4 +155,11 @@ class Logins {
         if (!isset($_SESSION['sessionid'])) return NULL;
         return $_SESSION['sessionid'];
     }
+
+    public static function endSession(){
+        $stmt = DB::get()->prepare("UPDATE session SET session_timefinish = CURRENT_TIMESTAMP WHERE session_id = ?");
+        $stmt->bindValue(1, Logins::getCurrentSession(), PDO::PARAM_INT);
+        $stmt->execute();
+        $_SESSION['sessionid'] = NULL;
+    }
 }

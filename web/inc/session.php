@@ -153,5 +153,5 @@ $(function() {
 <div style="width:100%;margin:0;height:10%;background:rgb(50,50,50);font-size:20px;" class="row">
     <div href="" style="height:100%;color:white;padding:0;" class="col-xs-3 vhalign">5.4<br/><span style="font-size:15px;">units</span></div>
     <div href="" style="height:100%;color:white;background:rgb(60,60,60);padding:0;" class="col-xs-3 vhalign"><span style="font-size:15px;">500 calories</span></div>
-    <a href="" style="height:100%;color:white;padding:0;" class="col-xs-6 vhalign">Go home.</a>
+    <a href="action/endsession.php" style="height:100%;color:white;padding:0;" class="col-xs-6 vhalign">Go home.</a>
 </div>

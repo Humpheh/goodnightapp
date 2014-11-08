@@ -9,7 +9,10 @@
 $base = dirname(__FILE__);
 
 require_once($base . '/config.php');
+require_once($base . '/classes/logins.php');
 date_default_timezone_set('Europe/London');
+
+session_start();
 
 /**
  * Class for organising database connection

@@ -9,12 +9,11 @@ $row = array("password" => $register['password'],
 	"weight"   => $register['weight'],
 	"gender"   => $register['gender']);
 
-	  // try to login
-	  if (Logins::register($row)){
-	      echo $_GET['callback'] . '(' . "{'response' : 'SUCCESS'}" . ')';
-	}else{
-		echo $_GET['callback'] . '(' . "{'response' : 'FAILURE}" . ')';
-	}
+// try to login
+if (Logins::register($row)){
+  	echo $_GET['callback'] . '(' . "{'response' : 'SUCCESS'}" . ')';
+}else{
+	echo $_GET['callback'] . '(' . "{'response' : 'FAILURE}" . ')';
 }
 
 ?>

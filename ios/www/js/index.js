@@ -1,4 +1,5 @@
  var loginInfo = new Array();
+ var registerInfo = new Array();
 
 //sets up the JSON query
 function queryExternal(path, data, done, fail){

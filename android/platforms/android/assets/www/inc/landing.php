@@ -25,6 +25,7 @@
         display:box;
         box-align:center;
 
+        margin: 0;
         padding: 20px;
     }
     .session-list .session:nth-child(even){
@@ -33,17 +34,31 @@
 </style>
 
 <div style="height:50%;overflow:scroll;" class="session-list">
-    <?php for($i = 0; $i < 10; $i++){ ?>
-        <div class="session row">
-            <div class="col-xs-9">
-                <span style="font-size:30px;line-height:0.95em;">19:25</span><br/>
-                25th March 2014
+    <?php
+
+    $stmt = DB::get()->prepare("SELECT * FROM session WHERE session_user = ?");
+    $stmt->bindValue(1, Logins::getCurrentUserID(), PDO::PARAM_INT);
+    $stmt->execute();
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
+        $timestamp = strtotime($row['session_timestart']);
+        $time = date("D jS M Y", $timestamp);
+        $date = date("H:i", $timestamp);
+
+        ?>
+
+        <div class="row session">
+            <div class="col-xs-9" style="padding:0;">
+                <span style="font-size:30px;line-height:0.95em;"><?php echo $date; ?></span><br/>
+                <?php echo $time; ?>
             </div>
-            <div class="col-xs-3" style="text-align:right;color:rgb(200,200,200);">
+            <div class="col-xs-3" style="padding:0;text-align:right;color:rgb(200,200,200);">
                 <span style="font-size:25px;line-height:0.95em;">250</span><br/>
                 calories
             </div>
         </div>
-    <?php } ?>
+
+        <?php
+    } ?>
 </div>
     You are logged in as <?php echo Logins::getCurrentUsername(); ?>. <a href="logout.php">Logout</a>

@@ -12,6 +12,7 @@ include 'init.php';
     else
         include 'inc/session.php';
 } else { ?>
+    include 'inc/landing.php';
 
     <div style="height:100%;width:100%;text-align:center;display:table">
         <div style="display:table-cell;vertical-align:middle;">
@@ -19,10 +20,10 @@ include 'init.php';
                 <h1 style="font-size:100px;font-weight:bold;font-style:italic;">Hello</h1>
                 <span style="font-size:30px;"><a href="login.php">Login</a> - <a href="register.php">Register</a></span>
 
-                <?php /*<a href="#" style="display:block;font-weight:normal;font-size:30px;width:100%;position:absolute;padding:15px 0;bottom:0px;">
+                <a href="#" style="display:block;font-weight:normal;font-size:30px;width:100%;position:absolute;padding:15px 0;bottom:0px;">
                     Next<br/>
                     <span class="glyphicon glyphicon-chevron-down"></span>
-                </a>*/ ?>
+                </a>
             </div>
         </div>
     </div>

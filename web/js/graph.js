@@ -8,11 +8,11 @@ var DrunkGraph = function (divElement) {
 
     var getDataFromServer = function() {
         $.ajax({
-            url: 'exampledrinks.php'
+            url: 'action/get_session_drinks.php'
         }).success(function(data) {
             console.log(data);
             setData(data);
-            setDataDump();
+            //setDataDump();
             drawGraph();
         });
     };
@@ -20,12 +20,17 @@ var DrunkGraph = function (divElement) {
     var setData = function (data) {
         var drink = null;
         var drink_time = null;
-        var full_drunkness = 0;
+        var ebac_before = 0;
+        var ebac_after = 0;
+        var drinkname = 0;
         for (var i = 0; i < data.length; i++) {
             drink = data[i];
             drink_time = new Date(drink['sessdr_time']);
-            full_drunkness += drink['sessdr_volume'] * drink['drink_percentage'];
-            currentBACLine[ currentBACLine.length ] = [drink_time, full_drunkness, drink['drink_name']];
+            ebac_before = parseFloat(drink['sessdr_ebac_before']);
+            ebac_after = parseFloat(drink['sessdr_ebac_after']);
+            drinkname = drink['sessdr_drink_id'];
+            currentBACLine[ currentBACLine.length ] = [drink_time, ebac_before, null];
+            currentBACLine[ currentBACLine.length ] = [drink_time, ebac_after, null];
 
             if (startDateTime == null || startDateTime > drink_time) {
                 startDateTime = drink_time;
@@ -39,6 +44,7 @@ var DrunkGraph = function (divElement) {
         endDateTime = new Date( '2014-11-8 22:00:00' );
         currentBACLine[ currentBACLine.length ] = [endDateTime, 0, null];
         interval = parseInt((endDateTime.getTime() - startDateTime.getTime())/60/60) ;
+        console.log(currentBACLine);
     };
 
     var setDataDump = function () { //TODO: Get real data

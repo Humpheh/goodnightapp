@@ -1,3 +1,4 @@
+
 <div id="drunkChart" style=""></div>
 <script src="js/plotting/jquery.jqplot.js"></script>
 <script src="js/plotting/plugins/jqplot.canvasTextRenderer.min.js"></script>
@@ -15,11 +16,3 @@
         //DrunkGraph('hangoverChart').draw();
     });
 </script>
-
-<?php
-/**
- * Created by PhpStorm.
- * User: kostja
- * Date: 11/8/14
- * Time: 11:21 PM
- */ 

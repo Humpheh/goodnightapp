@@ -4,7 +4,7 @@ include '../init.php';
 
 $userLogin = json_decode($_GET['jsondata']);
 // form has been submitted
-if (!empty($userLogin[0]) && !empty($userLogin[1])){
+if (!empty($userLogin['username']) && !empty($userLogin['password'])){
 	$userpass = $userLogin[0];
 	$username = $userLogin[1];
 

@@ -41,7 +41,7 @@ var callback = "?callback=?";
   };
 
 
-  window.onload = function checkLogin(){
+function checkLogin(){
 	function done(res){//this code is called if the backend responds
 		var response = res.response;
 		if(response == "SUCCESS"){
@@ -83,29 +83,55 @@ var callback = "?callback=?";
 }
 
 function login(){
-	loginInfo[0] = document.getElementById('username').value;
-	loginInfo[1] = document.getElementById('password').value;
+	loginInfo['username'] = document.getElementById('username').value;
+	loginInfo['password'] = document.getElementById('password').value;
 		
-	if(username != "" || document.getElementById('password').value != ""){
+	if(loginInfo['username'] != "" || loginInfo['password'] != ""){
 		function done(res){//this code is called if the backend responds
 			var response = res.response;
 			if(response == "SUCCESS"){
-				window.location.replace("#page-index");
 			}
 			else{
-				//FAILURE
-				window.location.replace("#page-index");
 			}
 		}
 		function fail(){
-			//changePage("#page-login");
-			window.location.replace("#page-index");
 		}
 		var loginArray = JSON.stringify(loginInfo);
 		queryExternal(backendUrl + "/login.php" + callback, "jsondata=" + loginArray, done, fail);
 	}else{
 		document.getElementById('loginResponse').innerHTML = "Please fill in all details.";
 	}
+}
+
+function register(){
+	registerInfo['username'] = document.getElementById('username').value;
+	registerInfo['password'] = document.getElementById('password').value;
+	registerInfo['weight'] = document.getElementById('weight').value;
+	registerInfo['gender'] = document.getElementById('gender').value;
+		
+	if(registerInfo['username'] != "" || registerInfo['password'] != "" || registerInfo['weight'] != "" || registerInfo['gender'] != ""){
+		function done(res){//this code is called if the backend responds
+			var response = res.response;
+			if(response == "SUCCESS"){
+			}
+			else{
+			}
+		}
+		function fail(){
+		}
+		var registerArray = JSON.stringify(registerInfo);
+		queryExternal(backendUrl + "/register.php" + callback, "jsondata=" + registerArray, done, fail);
+	}else{
+		document.getElementById('loginResponse').innerHTML = "Please fill in all details.";
+	}
+}
+
+function gotoLogin(){
+	window.location.replace("login.html");
+}
+
+function gotoRegister(){
+	window.location.replace("register.html");
 }
 
 app.initialize();

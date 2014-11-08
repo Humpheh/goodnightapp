@@ -1,10 +1,12 @@
 <div class="graph-holder">
     Graph goes here...
     <div class="drink-acceptor vhalign" style="left:0;">
-ho
+        <span class="text">1/2 Pint</span><br/>
+        <span class="ml">300ml</span>
     </div>
     <div class="drink-acceptor vhalign" style="right:0;">
-hey
+        <span class="text">1 Pint</span><br/>
+        <span class="ml">500ml</span>
     </div>
 </div>
 
@@ -23,6 +25,7 @@ hey
 }
 
 .drink-acceptor{
+    text-align:center;
     position: absolute;
     width: 50%;
     height: 100%;
@@ -31,6 +34,18 @@ hey
     transition: border ease-in-out 0.25s, opacity ease-in-out 0.15s;
     border: 0 solid black;
     opacity: 0;
+}
+
+.drink-acceptor .text{
+    font-size: 40px;
+    line-height: 0.9em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+}
+.drink-acceptor .ml{
+    font-size: 20px;
+    color: rgb(230, 230, 230);
 }
 
 .drink{
@@ -45,7 +60,7 @@ hey
     width: 125px;
     display: inline-block;
     background: rgb(160, 160, 160);
-    box-shadow:0 2px 5px rgba(0,0,0,0.25);
+    /*box-shadow:0 2px 5px rgba(0,0,0,0.25);*/
 }
 
 .drink-handle{
@@ -80,7 +95,7 @@ $(function() {
 
 </script>
 
-<div style="overflow-y: scroll;background:rgb(240,240,240);">
+<div style="overflow-y: hidden;background:rgb(240,240,240);">
 <div class="valign" style="height:30%;overflow-X: visible;">
     <div style="white-space: nowrap;display:inline-block;">
         <?php

@@ -22,15 +22,15 @@ if (!empty($_POST['password']) && !empty($_POST['username'])){
 
 ?>
 
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <form method="POST">
-        <input type="text"      name="username" placeholder="username" />
-        <input type="password"  name="password" placeholder="password" />
-        <input type="submit"    name="login" />
-    </form>
-</body>
-</html>
+
+<?php require 'header.php'; ?>
+
+<h1>Login</h1>
+
+<form method="POST">
+    <input type="text"      name="username" placeholder="username" />
+    <input type="password"  name="password" placeholder="password" />
+    <input type="submit"    name="login" />
+</form>
+
+<?php require 'footer.php'; ?>

@@ -4,10 +4,10 @@ include '../init.php';
 
 $register = json_decode($_GET['jsondata']);
 // form has been submitted
-$row = array("password" => $register['password'],
-	"username" => $register['username'],
-	"weight"   => $register['weight'],
-	"gender"   => $register['gender']);
+$row = array("password" => $register[0],
+	"username" => $register[1],
+	"weight"   => $register[2],
+	"gender"   => $register[3]);
 
 // try to login
 if (Logins::register($row)){

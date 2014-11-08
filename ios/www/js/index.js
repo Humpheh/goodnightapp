@@ -84,10 +84,10 @@ function checkLogin(){
 }
 
 function login(){
-	loginInfo['username'] = document.getElementById('username').value;
-	loginInfo['password'] = document.getElementById('password').value;
+	loginInfo[0] = document.getElementById('username').value;
+	loginInfo[1] = document.getElementById('password').value;
 		
-	if(loginInfo['username'] != "" || loginInfo['password'] != ""){
+	if(loginInfo[0] != "" || loginInfo[1] != ""){
 		function done(res){//this code is called if the backend responds
 			var response = res.response;
 			if(response == "SUCCESS"){
@@ -105,12 +105,12 @@ function login(){
 }
 
 function register(){
-	registerInfo['username'] = document.getElementById('username').value;
-	registerInfo['password'] = document.getElementById('password').value;
-	registerInfo['weight'] = document.getElementById('weight').value;
-	registerInfo['gender'] = document.getElementById('gender').value;
+	registerInfo[0] = document.getElementById('username').value;
+	registerInfo[1] = document.getElementById('password').value;
+	registerInfo[2] = document.getElementById('weight').value;
+	registerInfo[3] = document.getElementById('gender').value;
 		
-	if(registerInfo['username'] != "" || registerInfo['password'] != "" || registerInfo['weight'] != "" || registerInfo['gender'] != ""){
+	if(registerInfo[0] != "" || registerInfo[1] != "" || registerInfo[2] != "" || registerInfo[3] != ""){
 		function done(res){//this code is called if the backend responds
 			var response = res.response;
 			if(response == "SUCCESS"){

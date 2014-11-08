@@ -24,7 +24,7 @@ if (!empty($_POST['password']) && !empty($_POST['username'])){
 
 
 <?php require 'header.php'; ?>
-
+<div class-"container">
 <h1>Login</h1>
 
 <form method="POST" role="form">
@@ -36,5 +36,5 @@ if (!empty($_POST['password']) && !empty($_POST['username'])){
     </div>
     <input type="submit" name="login" value="Login" class="btn btn-block btn-primary"/>
 </form>
-
+</div>
 <?php require 'footer.php'; ?>

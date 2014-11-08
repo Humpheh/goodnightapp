@@ -41,7 +41,7 @@ var DrunkGraph = function (divElement) {
             }
         }
         startDateTime = new Date( startDateTime.getTime() - 60*60*1000 );
-        endDateTime = new Date( '2014-11-8 22:00:00' );
+        endDateTime = new Date( '2014-11-9 22:00:00' );
         currentBACLine[ currentBACLine.length ] = [endDateTime, 0, null];
         interval = parseInt((endDateTime.getTime() - startDateTime.getTime())/60/60) ;
         console.log(currentBACLine);

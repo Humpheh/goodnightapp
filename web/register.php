@@ -34,17 +34,24 @@ if (   !empty($_POST['password']) && !empty($_POST['username'])
 
 <h1>Register</h1>
 
-<form method="POST">
-    <input type="text" name="username" placeholder="username" />
-    <input type="password" name="password" placeholder="password" />
-
-    <input type="text" name="weight" placeholder="weight" />
-    <select name="gender">
-        <option value="none">-</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select>
-    <input type="submit" name="register" />
+<form method="POST" role="form">
+    <div class="form-group">
+        <input type="text" name="username" placeholder="username" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <input type="password" name="password" placeholder="password" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <input type="text" name="weight" placeholder="weight" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <select name="gender" class="form-control">
+            <option value="none">-</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+    </div>
+    <input type="submit" name="register" class="btn btn-primary btn-lg btn-block"/>
 </form>
 
 <?php require 'footer.php'; ?>

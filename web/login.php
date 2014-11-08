@@ -27,10 +27,14 @@ if (!empty($_POST['password']) && !empty($_POST['username'])){
 
 <h1>Login</h1>
 
-<form method="POST">
-    <input type="text"      name="username" placeholder="username" />
-    <input type="password"  name="password" placeholder="password" />
-    <input type="submit"    name="login" />
+<form method="POST" role="form">
+    <div class="form-group">
+        <input type="text" name="username" placeholder="username" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <input type="password" name="password" placeholder="password" class="form-control"/>
+    </div>
+    <input type="submit" name="login" value="Login" class="btn btn-block btn-primary"/>
 </form>
 
 <?php require 'footer.php'; ?>

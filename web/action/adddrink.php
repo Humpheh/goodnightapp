@@ -43,7 +43,7 @@ function calcSum($sessionid){
         "TIME" => $start);
 }
 
-$sessionid = 1;
+$sessionid = Logins::getCurrentSession();
 
 $drinkid = intval($_POST['drinkid']);
 $volume = floatval($_POST['volume']);

@@ -77,6 +77,15 @@ class Logins {
         // store row
         $_SESSION['user'] = $row;
         $_SESSION['user_loggedin'] = true;
+
+        $stmt = DB::get()->prepare("SELECT session_id FROM session WHERE
+            session_timefinish IS NULL AND session_user_id = ?");
+        $stmt->bindValue(1, $_SESSION['user']['user_id'], PDO::FETCH_ASSOC);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0){
+            Logins::setCurrentSession($stmt->fetch(PDO::FETCH_ASSOC)['session_id']);
+        }
     }
 
     /**
@@ -154,5 +163,21 @@ class Logins {
     public static function getCurrentSession(){
         if (!isset($_SESSION['sessionid'])) return NULL;
         return $_SESSION['sessionid'];
+    }
+
+    public static function endSession(){
+        $test = DB::get()->prepare("SELECT * FROM sessiondrink WHERE sessdr_session_id = ?");
+        $test->bindValue(1, Logins::getCurrentSession(), PDO::PARAM_INT);
+        $test->execute();
+
+        $query = "UPDATE session SET session_timefinish = CURRENT_TIMESTAMP WHERE session_id = ?";
+        if ($test->rowCount() === 0) {
+            $query = "DELETE FROM session WHERE session_id = ?";
+        }
+
+        $stmt = DB::get()->prepare($query);
+        $stmt->bindValue(1, Logins::getCurrentSession(), PDO::PARAM_INT);
+        $stmt->execute();
+        $_SESSION['sessionid'] = NULL;
     }
 }

@@ -73,18 +73,14 @@
 }
 
 function login(){
-	username = document.getElementById('loginUsername').value;
-	loginInfo[0] = document.getElementById('loginUsername').value;
+	loginInfo[0] = document.getElementById('username').value;
+	loginInfo[1] = document.getElementById('password').value;
 		
-	if(username != "" || document.getElementById('loginPassword').value != ""){
+	if(username != "" || document.getElementById('password').value != ""){
 		function done(res){//this code is called if the backend responds
 			var response = res.response;
 			if(response == "SUCCESS"){
-				if(res.data == null){
-					document.getElementById('loginResponse').innerHTML = "Incorrect login details.";
-				}else{
-					//SUCCESS
-				}
+				window.location.replace("#page-index");
 			}
 			else{
 				//FAILURE
@@ -96,7 +92,7 @@ function login(){
 			window.location.replace("#page-index");
 		}
 		var loginArray = JSON.stringify(loginInfo);
-		queryExternal(backendUrl + "/login.php" + callback, "jsondata=" + loginArray, done, fail);
+		queryExternal(backendUrl + "10.36.8.70/goodnighthack/web/php/login.php" + callback, "jsondata=" + loginArray, done, fail);
 	}else{
 		document.getElementById('loginResponse').innerHTML = "Please fill in all details.";
 	}

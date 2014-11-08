@@ -2,18 +2,18 @@
 header("Content-Type: application/json");
 include 'init.php';
 
+$userLogin = json_decode($_GET['jsondata']);
 // form has been submitted
-if (!empty($_POST['password']) && !empty($_POST['username'])){
-	$userpass = $_POST['password'];
-	$username = $_POST['username'];
+if (!empty($userLogin[0]) && !empty($userLogin[1])){
+	$userpass = $userLogin[0];
+	$username = $userLogin[1];
 
-    // try to login
+    	// try to login
 	if (Logins::login($username, $userpass)){
-		header("Location: index.php");
-		exit();
+		echo $_GET['callback'] . '(' . "{'response' : 'SUCCESS'}" . ')';
+	}else{
+		echo $_GET['callback'] . '(' . "{'response' : 'FAILURE}" . ')';
 	}
 }
-
-mysqli_close($con);
 
 ?>

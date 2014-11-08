@@ -7,8 +7,12 @@ include 'init.php';
 <?php require 'header.php'; ?>
 
 <?php if(Logins::isLoggedIn()){
-    include 'inc/session.php';
+    if (Logins::getCurrentSession() == NULL)
+        include 'inc/landing.php';
+    else
+        include 'inc/session.php';
 } else { ?>
+    include 'inc/landing.php';
 
     <div style="height:100%;width:100%;text-align:center;display:table">
         <div style="display:table-cell;vertical-align:middle;">

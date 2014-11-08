@@ -44,8 +44,10 @@ function calcSum($sessionid){
 }
 
 $sessionid = 1;
-$drinkid = 1;
-$volume = 100;
+
+$drinkid = intval($_POST['drinkid']);
+$volume = floatval($_POST['volume']);
+
 
 // get the percentage of the drink from the database
 $per = DB::get()->prepare("SELECT drink_percent FROM drink WHERE drink_id = ?" );

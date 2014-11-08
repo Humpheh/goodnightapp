@@ -1,5 +1,5 @@
 <div style="height:50%;">
-    <a href="" style="background:brown;display:table;width:100%;height:100%;text-align:center;">
+    <a href="action/newsession.php" style="background:brown;display:table;width:100%;height:100%;text-align:center;">
         <span style="color:white;display:table-cell;vertical-align:middle;font-size:80px;" class="glyphicon glyphicon-plus"></span>
     </a>
 </div>

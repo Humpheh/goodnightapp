@@ -21,7 +21,7 @@
     opacity: 1;
 }
 .drink-acceptor.active{
-    border: 15px solid white;
+    border: 10px solid white;
 }
 
 .drink-acceptor{
@@ -37,7 +37,7 @@
 }
 
 .drink-acceptor .text{
-    font-size: 30px;
+    font-size: 28px;
     line-height: 0.9em;
     text-transform: uppercase;
     font-weight: bold;
@@ -49,8 +49,8 @@
 }
 
 .drink{
-    -webkit-transition: border ease-in-out 1s;
-    transition: border ease-in-out 1s;
+    -webkit-transition: border ease-in-out 0.1s;
+    transition: border ease-in-out 0.1s;
     border: 0px solid white;
     position: relative;
     margin: 0 10px;
@@ -63,6 +63,11 @@
     /*box-shadow:0 2px 5px rgba(0,0,0,0.25);*/
 }
 
+.drink-name{
+    line-height:0.9em;text-align:center;pointer-events:none;font-size:18px;padding:2px;text-shadow:0 0 3px black;
+    white-space:normal;border-radius:4px;position:absolute;top:0;text-transform:uppercase;width:100%;height:100%;color:white;
+}
+
 .drink-handle{
     position: absolute;
     left: 50%;
@@ -73,6 +78,9 @@
     width: 100px;
     height: 100px;
 }
+.drink.sel{
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+}
 </style>
 
 <script>
@@ -80,18 +88,38 @@ $(function() {
     $( ".drink" ).draggable({
         helper: 'clone',
         appendTo: 'body',
-        handle: '.drink-handle'
+        handle: '.drink-handle',
+        scroll: false
     });
 
     $( ".drink-acceptor" ).droppable({
         activeClass: "hover",
         hoverClass: "active",
         activate: function( event, ui ) {
+            $('#acc-left .text').html( $(ui.draggable).data( "type1" ) );
+            $('#acc-left .ml').html( $(ui.draggable).data( "type1-ml" ) + "ml");
 
+            $('#acc-right .text').html( $(ui.draggable).data( "type2" ) );
+            $('#acc-right .ml').html( $(ui.draggable).data( "type2-ml" ) + "ml");
+
+            $(ui.helper).addClass("sel");
         },
         over: function( event, ui ) {
-            $(ui.helper).css("border-width", "10px");
+            $(ui.helper).css("border-width", "5px");
             return false;
+        },
+        drop: function (event, ui){
+            var vol = $(this).attr('id') === "acc-left" ?
+                $(ui.draggable).data( "type1-ml" ) :
+                $(ui.draggable).data( "type2-ml" );
+
+            $.post( "action/adddrink.php", {
+                drinkid: $(ui.draggable).data( "drinkid" ),
+                volume: vol
+            }).done(function( data ) {
+                alert( "Data Loaded: " + data );
+            });
+
         }
     });
 });
@@ -109,15 +137,13 @@ $(function() {
 
         foreach ($rows as $row){ ?>
             <div class="drink valign"
+                data-drinkid="<?php echo $row['drink_id']; ?>"
                 data-type1="<?php echo $row['drink_type1']; ?>" data-type1-ml="<?php echo $row['drink_type1_ml']; ?>"
-                data-type2="<?php echo $row['drink_type2']; ?>" data-type2-ml="<?php echo $row['drink_type1_ml']; ?>">
-                <img src="images/bottles/<?php echo $row['drink_picture']; ?>" style="width:100%;"/>
+                data-type2="<?php echo $row['drink_type2']; ?>" data-type2-ml="<?php echo $row['drink_type2_ml']; ?>">
+                <img src="images/bottles/<?php echo $row['drink_picture']; ?>" style="width:100%;padding:10px;"/>
                 <div class="drink-handle"> </div>
-                <div class="vhalign" style="line-height:0.9em;text-align:center;pointer-events:none;font-size:18px;padding:2px;text-shadow:0 0 3px black;
-                white-space:normal;border-radius:4px;position:absolute;top:0;text-transform:uppercase;width:100%;height:100%;color:white;">
-
-                        <?php echo str_replace("_", " ", $row['drink_name']); ?>
-
+                <div class="vhalign drink-name">
+                    <?php echo str_replace("_", " ", $row['drink_name']); ?>
                 </div>
             </div>
         <?php } ?>

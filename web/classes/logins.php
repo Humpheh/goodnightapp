@@ -136,4 +136,23 @@ class Logins {
         if (!Logins::isLoggedIn()) return false;
         return $_SESSION['user']['user_gender'];
     }
+
+    public static function newSession(){
+        $stmt = DB::get()->prepare("INSERT INTO session (session_user_id) VALUES (?)");
+        $stmt->bindValue(1, Logins::getCurrentUserID(), PDO::PARAM_INT);
+        $stmt->execute();
+
+        $sessionid = DB::get()->lastInsertId();
+
+        Logins::setCurrentSession($sessionid);
+    }
+
+    public static function setCurrentSession($newid){
+        $_SESSION['sessionid'] = $newid;
+    }
+
+    public static function getCurrentSession(){
+        if (!isset($_SESSION['sessionid'])) return NULL;
+        return $_SESSION['sessionid'];
+    }
 }

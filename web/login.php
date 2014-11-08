@@ -24,7 +24,7 @@ if (!empty($_POST['password']) && !empty($_POST['username'])){
 
 
 <?php require 'header.php'; ?>
-<div class-"container">
+<div class="container">
 <h1>Login</h1>
 
 <form method="POST" role="form">

@@ -16,36 +16,14 @@ include 'init.php';
 <script type="text/javascript">
 $("document").ready(function() {      
         
-        $('.top-title').click(function(){
+        $('#loginBtn').click(function(){
                        
           $('html, body').animate({
             scrollTop: $(".middle").offset().top
           }, 2000);          
            
                        
-         });
-        
-        
-        
-        $('.middle-title').click(function(){
-                       
-          $('html, body').animate({
-            scrollTop: $(".bottom").offset().top
-          }, 2000);          
-           
-                       
-         });
-        
-        
-          $('.bottom-title').click(function(){
-                       
-          $('html, body').animate({
-            scrollTop: $(".top").offset().top
-          }, 2000);          
-           
-                       
-         });
-
+         });        
 });
 </script>
 
@@ -71,13 +49,6 @@ $("document").ready(function() {
   }
   
   
-.bottom{
-  height:600px;
-  background-color:#FF6;
-  border:2px solid #FF3;
-  margin-bottom:30px;
-  } 
-  
 .top-title, .middle-title, .bottom-title{
   cursor:pointer;
   margin-top:300px;
@@ -94,7 +65,7 @@ $("document").ready(function() {
                 <span style="font-size:30px;"><a id="loginBtn">Login</a> - <a href="register.php">Register</a></span>
 
             </div>
-
+</div>
 <div class="middle">
 
 <div class="container">
@@ -111,10 +82,6 @@ $("document").ready(function() {
                 </form>
 </div>
 </div>
-
-
-</div>
-
 
 <?php }
 require 'footer.php'; ?>

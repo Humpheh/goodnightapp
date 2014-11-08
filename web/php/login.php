@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-include 'init.php';
+include '../init.php';
 
 $userLogin = json_decode($_GET['jsondata']);
 // form has been submitted

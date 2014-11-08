@@ -1,3 +1,13 @@
+ var loginInfo = new Array();
+
+//sets up the JSON query
+function queryExternal(path, data, done, fail){
+	$.getJSON(path, data, done).fail(function() {fail();});
+}
+
+var backendUrl = "http://10.36.8.70/goodnighthack/web/php";
+var callback = "?callback=?";
+
  var app = {
     // Application Constructor
     initialize: function() {
@@ -69,7 +79,7 @@
 		window.location.replace("#page-index");
 	}
 	var loginArray = JSON.stringify(loginInfo);
-	queryExternal(backendUrl + "10.36.8.70/goodnighthack/web/php/login.php" + callback, "jsondata=" + loginArray, done, fail);
+	queryExternal(backendUrl + "/login.php" + callback, "jsondata=" + loginArray, done, fail);
 }
 
 function login(){
@@ -92,7 +102,7 @@ function login(){
 			window.location.replace("#page-index");
 		}
 		var loginArray = JSON.stringify(loginInfo);
-		queryExternal(backendUrl + "10.36.8.70/goodnighthack/web/php/login.php" + callback, "jsondata=" + loginArray, done, fail);
+		queryExternal(backendUrl + "/login.php" + callback, "jsondata=" + loginArray, done, fail);
 	}else{
 		document.getElementById('loginResponse').innerHTML = "Please fill in all details.";
 	}

@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-include 'init.php';
+include '../init.php';
 
 // is the user loggedin
 if (Logins::isLoggedIn()){

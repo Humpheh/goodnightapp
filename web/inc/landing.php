@@ -7,24 +7,6 @@
 <style>
     .session-list .session{
         background: rgb(50, 50, 50);
-
-
-        /* Internet Explorer 10 */
-        display:-ms-flexbox;
-        -ms-flex-align:center;
-
-        /* Firefox */
-        display:-moz-box;
-        -moz-box-align:center;
-
-        /* Safari, Opera, and Chrome */
-        display:-webkit-box;
-        -webkit-box-align:center;
-
-        /* W3C */
-        display:box;
-        box-align:center;
-
         margin: 0;
         padding: 20px;
     }
@@ -47,7 +29,7 @@
 
         ?>
 
-        <div class="row session">
+        <div class="row session valign">
             <div class="col-xs-9" style="padding:0;">
                 <span style="font-size:30px;line-height:0.95em;"><?php echo $date; ?></span><br/>
                 <?php echo $time; ?>

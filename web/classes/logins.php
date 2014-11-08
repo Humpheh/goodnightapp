@@ -120,4 +120,20 @@ class Logins {
         if (!Logins::isLoggedIn()) return false;
         return $_SESSION['user']['user_id'];
     }
+
+    /**
+     * Get the current user weight.
+     */
+    public static function getCurrentUserWeight(){
+        if (!Logins::isLoggedIn()) return false;
+        return floatval($_SESSION['user']['user_weight']);
+    }
+
+    /**
+     * Get the current user gender.
+     */
+    public static function getCurrentUserGender(){
+        if (!Logins::isLoggedIn()) return false;
+        return $_SESSION['user']['user_gender'];
+    }
 }

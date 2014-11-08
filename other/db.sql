@@ -22,8 +22,7 @@ CREATE TABLE session (
 CREATE TABLE drink (
     drink_id SERIAL,
     drink_name VARCHAR(100) NOT NULL,
-    drink_units FLOAT NOT NULL,
-    drink_volume INT NOT NULL,
+    drink_percent FLOAT NOT NULL,
     drink_picture VARCHAR(200) NULL,
     drink_calories INT
 ) ENGINE=INNODB;
@@ -32,9 +31,5 @@ CREATE TABLE sessiondrink (
     sessdr_id SERIAL,
     sessdr_session_id BIGINT UNSIGNED,
     sessdr_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-<<<<<<< HEAD
-    sessdr_volume INT 
-=======
     sessdr_volume INT
->>>>>>> f0b4bbe8e8dbfcbb64da0635ad7941dcab39771d
 ) ENGINE=INNODB;

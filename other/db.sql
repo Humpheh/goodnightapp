@@ -9,11 +9,11 @@ CREATE TABLE user (
 
 CREATE TABLE session (
     session_id SERIAL,
-    session_user BIGINT UNSIGNED,
+    session_user_id BIGINT UNSIGNED,
     session_timestart TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     session_timefinish TIMESTAMP NULL DEFAULT NULL,
 
-    FOREIGN KEY (session_id)
+    FOREIGN KEY (session_user_id)
         REFERENCES user(user_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
@@ -31,6 +31,19 @@ CREATE TABLE drink (
 CREATE TABLE sessiondrink (
     sessdr_id SERIAL,
     sessdr_session_id BIGINT UNSIGNED,
+    sessdr_drink_id BIGINT UNSIGNED,
     sessdr_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    sessdr_volume INT
+    sessdr_volume INT,
+    sessdr_ebac_before FLOAT NOT NULL,
+    sessdr_ebac_after FLOAT NOT NULL,
+
+    FOREIGN KEY (sessdr_session_id)
+        REFERENCES session(session_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (sessdr_drink_id)
+        REFERENCES drink(drink_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 ) ENGINE=INNODB;

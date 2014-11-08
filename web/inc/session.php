@@ -1,10 +1,10 @@
 <div class="graph-holder">
     Graph goes here...
-    <div class="drink-acceptor vhalign" style="left:0;">
+    <div id="acc-left" class="drink-acceptor vhalign" style="left:0;">
         <span class="text">1/2 Pint</span><br/>
         <span class="ml">300ml</span>
     </div>
-    <div class="drink-acceptor vhalign" style="right:0;">
+    <div id="acc-right" class="drink-acceptor vhalign" style="right:0;">
         <span class="text">1 Pint</span><br/>
         <span class="ml">500ml</span>
     </div>
@@ -37,14 +37,14 @@
 }
 
 .drink-acceptor .text{
-    font-size: 40px;
+    font-size: 30px;
     line-height: 0.9em;
     text-transform: uppercase;
     font-weight: bold;
     color: white;
 }
 .drink-acceptor .ml{
-    font-size: 20px;
+    font-size: 18px;
     color: rgb(230, 230, 230);
 }
 
@@ -86,6 +86,9 @@ $(function() {
     $( ".drink-acceptor" ).droppable({
         activeClass: "hover",
         hoverClass: "active",
+        activate: function( event, ui ) {
+
+        },
         over: function( event, ui ) {
             $(ui.helper).css("border-width", "10px");
             return false;
@@ -105,7 +108,9 @@ $(function() {
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($rows as $row){ ?>
-            <div class="drink valign">
+            <div class="drink valign"
+                data-type1="<?php echo $row['drink_type1']; ?>" data-type1-ml="<?php echo $row['drink_type1_ml']; ?>"
+                data-type2="<?php echo $row['drink_type2']; ?>" data-type2-ml="<?php echo $row['drink_type1_ml']; ?>">
                 <img src="images/bottles/<?php echo $row['drink_picture']; ?>" style="width:100%;"/>
                 <div class="drink-handle"> </div>
                 <div class="vhalign" style="line-height:0.9em;text-align:center;pointer-events:none;font-size:18px;padding:2px;text-shadow:0 0 3px black;

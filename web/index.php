@@ -7,7 +7,7 @@ include 'init.php';
 <?php require 'header.php'; ?>
 
 <?php if(Logins::isLoggedIn()){
-    include 'inc/landing.php';
+    include 'inc/session.php';
 } else { ?>
 
     <div style="height:100%;width:100%;text-align:center;display:table">

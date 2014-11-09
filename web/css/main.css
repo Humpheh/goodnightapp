@@ -227,3 +227,7 @@ body{
     -webkit-transition: background ease-in-out 0.5s;
     transition: background ease-in-out 0.5s;
 }
+
+.jqplot-target{
+    background: red;
+}

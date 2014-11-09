@@ -65,8 +65,9 @@ $(window).load(function() {
     
 });
 </script>
-<div class="container">
-<h1>Register</h1>
+<div id="register">
+<div style="padding-top:10%;padding-right:20%;padding-left:20%;" class="container">
+<center><h1 style="padding-bottom:30px;font-weight: bold;font-style: italic;font-size:50px;color:rgb(195, 193, 193);">Register</h1></center>
 
 <form method="POST" role="form">
     <div class="form-group">
@@ -87,5 +88,6 @@ $(window).load(function() {
     </div>
     <input type="submit" name="register" class="btn btn-primary btn-lg btn-block"/>
 </form>
+</div>
 </div>
 <?php require 'footer.php'; ?>

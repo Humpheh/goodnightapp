@@ -51,14 +51,3 @@ var app = {
 };
 
 app.initialize();
-
-$(document).ready(function() {
-    $("#username").on('blur', function() {
-        // on blur, if there is no value, set the defaultText
-        document.body.scrollTop = 0;
-    });
-    $("#password").on('blur', function() {
-        // on blur, if there is no value, set the defaultText
-        document.body.scrollTop = 0;
-    });
-});

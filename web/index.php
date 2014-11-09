@@ -43,9 +43,6 @@ $("document").ready(function() {
 </script>
 
 <style>
-body{
-  overflow:hidden;
-}
 
 .top, .middle, .bottom{
   padding:30px;

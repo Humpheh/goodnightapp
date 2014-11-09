@@ -31,7 +31,7 @@
         $date = date("H:i", $timestamp);
         ?>
 
-        <div class="row session valign">
+        <a href="view.php?id=<?php echo $row['session_id']; ?>" class="row session valign">
             <div class="col-xs-9" style="padding:0;color:white;">
                 <span style="font-size:30px;line-height:0.95em;"><?php echo $date; ?></span><br/>
                 <?php echo $time; ?>
@@ -42,7 +42,7 @@
                 </span><br/>
                 calories / units
             </div>
-        </div>
+        </a>
 
         <?php
     } ?>

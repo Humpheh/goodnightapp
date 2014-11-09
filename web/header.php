@@ -28,9 +28,19 @@
 					$.post( "action/removelastdrink.php").done(function( data ) {
 						$('#history').html(data);
 
-						var graph = DrunkGraph('drunkChart');
-						$('#drunkChart').html("");
-						graph.draw();
+						$.post( "action/getupdatedvals.php").done(function( data ) {
+							var obj = jQuery.parseJSON( data );
+
+							$("#units .value").html(obj.units);
+							$("#calories .value").html(obj.calories);
+							var graph = DrunkGraph('drunkChart');
+							$('#drunkChart').html("");
+							graph.draw();
+
+							per = obj.units / MAXUNITS;
+							col = getColorForPercentage(per);
+							$('#units').css('background', col);
+						});
 					});
 				});
 			});

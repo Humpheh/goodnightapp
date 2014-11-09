@@ -88,7 +88,7 @@ $("document").ready(function() {
                     <div class="form-group" style="padding-bottom: 30px;">
                         <input type="password" name="password" placeholder="Password" id="password" class="form-control"/>
                     </div>
-                    <center><div style="padding-right:20%;padding-left:20%;"><input style="background-color:transparent;border:none;color:#428bca;font-size:30px;" type="submit" name="login" value="Login" class="btn btn-block btn-primary"/></div>
+                    <center><span style="font-size:30px;"><a style="cursor:pointer;" onclick="document.forms[0].submit()" id="loginBtn">Login</a></span><br>
                     <span style="font-size:20px;"><a href="register.php">Register</a></span></center>
                 </form>
 </div>

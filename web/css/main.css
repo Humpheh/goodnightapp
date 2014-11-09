@@ -21,6 +21,14 @@ body {
         background-position: center;
 }
 
+#register{
+        background-image: url('background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height:100%;
+}
+
 .btn-primary:hover {
   text-decoration: underline;
 }

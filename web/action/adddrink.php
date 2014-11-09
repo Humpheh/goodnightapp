@@ -94,7 +94,8 @@ $json = "{";
 $json .= '"oldEbac" : ' . $oldEbac . ',';
 $json .= '"newEbac" : ' . $newEbac . ',';
 $json .= '"units" : ' . $stats['units'] . ',';
-$json .= '"calories" : ' . $stats['calories'];
+$json .= '"calories" : ' . $stats['calories'] . ',';
+$json .= '"history" : ' . json_encode(Tools::getHistory()) . '';
 $json .= '}';
 
 echo $json;

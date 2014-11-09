@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * COMMENTING IS FOR PEOPLE WHO HAVE MORE THAN 30 HOURS TO MAKE SOMETHING
+ * 												- Einstein
+ */
 
 ?>
 
@@ -15,5 +19,17 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic' rel='stylesheet' type='text/css'>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<script>
+
+			$("document").ready(function() {
+				$('#history').on('click', '.remove-last-button', function(e){
+					e.preventDefault();
+					$.post( "action/removelastdrink.php").done(function( data ) {
+						$('#history').html(data);
+					});
+				});
+			});
+		</script>
 	</head>
 	<body>

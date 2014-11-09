@@ -4,7 +4,7 @@ $stats = Tools::calcStats(Logins::getCurrentSession());
 
 ?>
 
-<div class="graph-holder">
+<div class="first graph-holder" style="position:relative;">
     <?php include 'graph.php' ?>
     <div id="acc-left" class="drink-acceptor vhalign" style="left:0;">
         <span class="text">1/2 Pint</span><br/>
@@ -14,9 +14,31 @@ $stats = Tools::calcStats(Logins::getCurrentSession());
         <span class="text">1 Pint</span><br/>
         <span class="ml">500ml</span>
     </div>
+    <div id="info" style="padding:30px;display:none;position:absolute;width:100%;height:100%;top:0;background:rgb(200,200,200);">
+
+    </div>
 </div>
 
+<script type="text/javascript">
+var scrolled = false;
+    $("document").ready(function() {
+
+        $('#more').click(function(e){
+            e.preventDefault();
+          $('html, body').animate({
+            scrollTop: $(scrolled ? ".first" : ".second").offset().top
+          }, 500);
+        scrolled = !scrolled;
+        $('#menu-button').toggleClass("glyphicon-chevron-down glyphicon-chevron-up");
+    });
+});
+</script>
+
 <style>
+body{
+    overflow:hidden;
+}
+
 .graph-holder{
     height: 60%;
     background: black;
@@ -105,6 +127,20 @@ $(function() {
         scroll: false
     });
 
+    $( ".drink" ).click(function(e){
+        $.post( "action/getdrinkinfo.php", {
+            drinkid: $(this).data( "drinkid" )
+        }).done(function( data ) {
+            $('#info').html(data);
+
+            $("#info").slideDown();
+        });
+    });
+
+    $('#info').on('click', '#close-info', function(e){
+        $("#info").slideUp();
+    });
+
     $( ".drink-acceptor" ).droppable({
         activeClass: "hover",
         hoverClass: "active",
@@ -141,6 +177,8 @@ $(function() {
                 per = obj.units / <?php echo Logins::getMaxUnits(); ?>;
                 col = getColorForPercentage(per);
                 $('#units').css('background', col);
+
+                $("#history").html(obj.history);
             });
 
         }
@@ -199,12 +237,83 @@ var getColorForPercentage = function(pct) {
     </div>
 </div>
 </div>
-<div style="text-shadow:0 1px 0 rgba(0,0,0,0.5);width:100%;margin:0;height:10%;background:rgb(50,50,50);font-size:20px;" class="row">
+<div style="text-shadow:0 1px 0 rgba(0,0,0,0.5);width:100%;margin:0;height:10%;background:rgb(50,50,50);font-size:20px;" class="second row">
     <div id="units" href="" style="height:100%;color:white;padding:0;text-align:center;" class="col-xs-3 vhalign fader">
         <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $stats['units']; ?></span><br/>
         <span style="font-size:15px;line-height:0.9em;">units</span></div>
-    <div id="calories" href="" style="height:100%;color:white;background:rgb(60,60,60);text-align:center;padding:0;" class="col-xs-3 vhalign fader">
+    <div id="calories" href="" style="height:100%;color:white;background:rgb(60,60,60);border:1px solid rgb(50,50,50);text-align:center;padding:0;" class="col-xs-3 vhalign fader">
         <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $stats['calories']; ?></span><br/>
         <span style="font-size:15px;line-height:0.9em;">calories</span></div>
-    <a href="action/endsession.php" style="height:100%;color:white;padding:0;" class="col-xs-6 vhalign">Go home.</a>
+    <a id="more" href="#" style="height:100%;color:white;padding:0;border:1px solid rgb(30,30,30)" class="col-xs-6 vhalign">
+        MENU <span id="menu-button" style="padding-left:5px;vertical-align:-2px;" class="glyphicon glyphicon-chevron-down"></span>
+    </a>
+</div>
+
+<style>
+    .menu-buttons a{
+        display: block;
+        height: 15%;
+        width: 100%;
+        background: rgb(60, 60, 60);
+        text-align: center;
+        color: white;
+        font-size: 25px;
+        text-transform: uppercase;
+    }
+    .menu-buttons a:nth-child(even){
+        background: rgb(50, 50, 50);
+    }
+    .menu-buttons a div{
+        line-height: 0;
+        position: relative;
+        top: 50%;
+    }
+
+    .history{
+        height: 55%;
+        overflow-y: scroll;
+    }
+    .history .history-item{
+        color:white;text-shadow:0 1px 0 black;font-size:20px;background:rgb(100, 100, 100);height:60px;
+    }
+    .history .history-item:nth-child(even){
+        background:rgb(120, 120, 120);
+    }
+    .history .history-item .x{
+        margin:0;padding:0;
+    }
+    .history .history-item .x .vhalign{
+        color:white;padding:0;float:right;height:60px;width:60px;background:rgb(170, 50, 50);
+    }
+    .history .history-item .text {
+        color:white;height:100%;padding-left:15px;
+        line-height: 0.9em;
+    }
+    .history .history-item .stat{
+        margin-right:20px;font-size:15px;
+        line-height: 0.9em;
+    }
+    .history a:hover{
+        text-decoration: none;
+    }
+</style>
+
+<div style="height:90%;">
+    <div class="menu-buttons">
+        <a href="action/endsession.php">
+            <div style="vertical-align:middle;">Emergency</div>
+        </a>
+        <a href="action/endsession.php">
+            <div style="vertical-align:middle;">Call taxi</div>
+        </a>
+        <a href="action/endsession.php">
+            <div style="vertical-align:middle;">Nights over</div>
+        </a>
+    </div>
+
+    <div id="history" class="history">
+        <?php
+        echo Tools::getHistory();
+        ?>
+    </div>
 </div>

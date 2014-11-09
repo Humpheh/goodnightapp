@@ -148,9 +148,16 @@ class Logins {
         return $_SESSION['user']['user_gender'];
     }
 
-    public static function newSession(){
-        $stmt = DB::get()->prepare("INSERT INTO session (session_user_id) VALUES (?)");
+    public static function newSession($hr, $min){
+
+
+        $time = strtotime(date('Y-m-d')) + 24*60*60 + $hr*60*60 + $min*60;
+        if ($hr == -1 || $min == -1) $time = NULL;
+
+
+        $stmt = DB::get()->prepare("INSERT INTO session (session_user_id, session_soberby) VALUES (?, ?)");
         $stmt->bindValue(1, Logins::getCurrentUserID(), PDO::PARAM_INT);
+        $stmt->bindValue(2, date('Y-m-d H:i:s', $time), PDO::PARAM_STR);
         $stmt->execute();
 
         $sessionid = DB::get()->lastInsertId();

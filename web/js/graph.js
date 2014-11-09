@@ -12,7 +12,7 @@ var DrunkGraph = function (divElement) {
         }).success(function(data) {
             console.log(data);
             setData(data);
-            //setDataDump();
+            setDataDump();
             drawGraph();
         });
     };
@@ -40,8 +40,7 @@ var DrunkGraph = function (divElement) {
                 endDateTime = drink_time;
             }
         }
-        //alert(endOfAlcohol);
-        //if (endOfAlcohol != null && endOfAlcohol > endDateTime)
+
         endDateTime = new Date( endDateTime.getTime() + 60*60*1000*2 );
 
         var holeDuration =  endDateTime.getTime() - startDateTime.getTime();
@@ -50,7 +49,8 @@ var DrunkGraph = function (divElement) {
     };
 
     var setDataDump = function () {
-
+        worstedBACLine = [];
+        worstedBACLine[ worstedBACLine.length ] = [endOfAlcohol, 0, null];
     };
 
     var drawGraph = function() {
@@ -60,7 +60,7 @@ var DrunkGraph = function (divElement) {
             axes:{
                 xaxis:{
                     renderer:$.jqplot.DateAxisRenderer,
-                    tickOptions:{formatString:'%b %#d, %#I.%M %p'},
+                    tickOptions:{formatString:'%#H:%M'},
                     min: startDateTime,
                     tickInterval: interval
                 }

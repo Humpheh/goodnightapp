@@ -19,6 +19,11 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 require 'header.php';
 ?>
 
+<style>
+body{
+    overflow:hidden;
+}
+</style>
 <div class="first graph-holder" style="position:relative;">
     <?php //include 'inc/graph.php' ?>
 </div>

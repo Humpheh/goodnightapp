@@ -1,25 +1,39 @@
 <div id="landing">
-<div class="valign1" style="padding-bottom: 15px;" >
+<div class="valign1" style="padding: 15px 0;" >
     <div>
-        <span style="top: 5px;position: relative;left: 5px;">
-            <a href="logout.php">Logout</a>
+        <span style="top: 15px;position: absolute;left: 8px;">
+            <a href="logout.php" style="color:white;font-size:20px;"><i class="fa fa-times"></i>
+                <span style="font-size:15px;vertical-align:1px;">Logout</span></a>
         </span>
         <center>
-            <span style="padding-bottom:15px;font-weight: bold;font-style: italic;font-size:20px;color:rgb(195, 193, 193);">Welcome back <b><?php echo Logins::getCurrentUsername(); ?></b>.</span><br>
+            <span style="font-weight: bold;
+            font-style: italic;font-size:20px;color:rgb(195, 193, 193);
+            text-shadow: 0 1px 0 black;">Welcome back <b><?php echo Logins::getCurrentUsername(); ?></b>.</span><br>
         </center>
     </div>
 </div>
 <style>
+body{
+    overflow:hidden;
+}
+    .session-list {
+        background: rgba(255,255,255,0.5);
+    }
     .session-list .session{
         background: rgb(50, 50, 50);
         margin: 0;
         padding: 20px;
+        border-bottom: 1px solid rgb(70, 70, 70);
+    }
+    .session-list .session:hover{
+        opacity: 0.9;
     }
     .session-list .session:nth-child(even){
         background: rgb(40, 40, 40);
     }
 </style>
-<div style="height:65%;overflow:scroll;overflow-x:hidden;" class="session-list">
+<div style="position:relative;height:65%;overflow:scroll;overflow-x:hidden;border-top:1px solid black;border-bottom:1px solid black;" class="session-list">
+
     <?php
 
     $stmt = DB::get()->prepare("SELECT * FROM session WHERE session_user_id = ?
@@ -35,14 +49,13 @@
 
         <a href="view.php?id=<?php echo $row['session_id']; ?>" class="row session valign">
             <div class="col-xs-8" style="padding:0;color:white;">
-                <span style="font-size:30px;line-height:0.95em;"><?php echo $date; ?></span><br/>
+                <span style="font-size:25px;line-height:0.95em;"><?php echo $date; ?></span><br/>
                 <?php echo $time; ?>
             </div>
             <div class="col-xs-4" style="padding:0;text-align:right;color:rgb(200,200,200);">
-                <span style="font-size:25px;line-height:0.95em;">
-                    <?php echo $row['session_calories']; ?> / <?php echo $row['session_unit']; ?>
-                </span><br/>
-                calories / units
+                <span style="font-size:20px;line-height:0.9em;">
+                    <?php echo $row['session_calories']; ?> / <?php echo $row['session_unit']; ?></span><br/>
+                    calories / units
             </div>
         </a>
 
@@ -51,7 +64,7 @@
 </div>
 
 <form action="action/newsession.php" method="POST" style="color:white;font-size:17px;text-align:center;padding:10px;">
-    I want to be sober by
+    I want to feel great by
     <select name="hr">
         <option value="-1">-</option>
         <?php for ($i = 0; $i < 24; $i++) echo '<option value="'.$i.'">' . $i . '</option>'; ?>

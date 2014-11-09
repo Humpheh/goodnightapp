@@ -2,14 +2,6 @@
 
 include '../init.php';
 
-function ebac($sum, $gender, $weight, $DP){
-    $BW = ($gender == "female") ? 0.49 : 0.58;
-    $MR = ($gender == "female") ? 0.017 : 0.015;
-
-    $top = 0.806 * (1/12.7) * $sum * 1.2;
-    $bot = $BW * $weight;
-    return ($top / $bot) - ($MR * $DP);
-}
 
 // when adding drink
     // get ebac up to this point
@@ -59,7 +51,7 @@ $percent = floatval($per->fetch(PDO::FETCH_ASSOC)['drink_percent']) / 100;
 $oSum = calcSum($sessionid);
 $time = (time()-$oSum["time"]) / (60*60);
 
-$oldEbac = ebac($oSum["sum"], Logins::getCurrentUserGender(), Logins::getCurrentUserWeight(), $time);
+$oldEbac = Tools::ebac($oSum["sum"], Logins::getCurrentUserGender(), Logins::getCurrentUserWeight(), $time);
 
 //print_r($oSum);
 //exit();
@@ -75,7 +67,7 @@ if ($oldEbac <= 0){
 $nSum = $oSum["sum"] + floatval($volume) * floatval($percent);
 
 // calculate new ebac
-$newEbac = ebac($nSum, Logins::getCurrentUserGender(), Logins::getCurrentUserWeight(), $time);
+$newEbac = Tools::ebac($nSum, Logins::getCurrentUserGender(), Logins::getCurrentUserWeight(), $time);
 
 
 $stmt = DB::get()->prepare("INSERT INTO sessiondrink

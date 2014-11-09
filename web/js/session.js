@@ -20,13 +20,24 @@ $(function() {
         scroll: false
     });
 
+    var lastdrink = -1;
+    var down = false;
     $( ".drink" ).click(function(e){
+        out = this;
+        if (lastdrink == $(out).data( "drinkid" ) && down){
+            $("#info").slideUp();
+            lastdrink = -1;
+            down = false;
+            return;
+        }
         $.post( "action/getdrinkinfo.php", {
-            drinkid: $(this).data( "drinkid" )
+            drinkid: $(out).data( "drinkid" )
         }).done(function( data ) {
             $('#info').html(data);
 
             $("#info").slideDown();
+            down = true;
+            lastdrink = $(out).data( "drinkid" );
         });
     });
 

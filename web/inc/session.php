@@ -10,12 +10,15 @@ body{
 }
 </style>
 
-<!--
-<div class="vhalign" style="position:fixed;top:0px;left:0px;height:100%;width:100%;background:rgba(0,0,0,0.5);z-index:5;">
-    <div style="margin:10%;background:rgb(50,50,50);">
-            Hello
+
+<div id="popup" class="vhalign" style="display:none;position:fixed;top:0px;left:0px;height:100%;width:100%;background:rgba(0,0,0,0.5);z-index:5;">
+    <div style="box-shadow:0 0 5px rgba(0,0,0,0.5);margin:15px;border-radius:4px;color:white;padding:20px;background:rgb(50,50,50);">
+        <h2 style="margin-top:5px;">Be careful.</h2>
+        You've reached the suggested limit of alcohol consumption for today.<br/>
+
+        <a class="btn btn-primary" href="javascript:close_popup();"style="margin-top:20px;width:100%;">OK</a>
     </div>
-</div>-->
+</div>
 
 <div class="first graph-holder" style="position:relative;">
     <?php include 'graph.php' ?>
@@ -61,7 +64,7 @@ body{
     </div>
 </div>
 </div>
-<div style="text-shadow:0 1px 0 rgba(0,0,0,0.5);width:100%;margin:0;height:10%;background:rgb(50,50,50);font-size:20px;" class="second row">
+<div style="text-shadow:0 0 2px rgba(0,0,0,0.75);width:100%;margin:0;height:10%;background:rgb(50,50,50);font-size:20px;" class="second row">
     <div id="units" style="height:100%;color:white;padding:0;text-align:center;" class="col-xs-3 vhalign fader">
         <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $stats['units']; ?></span><br/>
         <span style="font-size:15px;line-height:0.9em;">units</span></div>
@@ -89,10 +92,10 @@ body{
 
 <div style="height:80%;">
     <div class="menu-buttons">
-        <a href="action/endsession.php" style="background:rgb(140, 100, 0);">
+        <a href="action/endsession.php" style="background:rgb(140, 100, 0);border-bottom:1px solid rgb(80, 50, 0)">
             <div style="vertical-align:middle;">Call taxi / emergency</div>
         </a>
-        <a href="action/endsession.php" style="background:rgb(20,100,20);">
+        <a href="action/endsession.php" style="background:rgb(20,100,20);border-bottom:1px solid rgb(10, 60, 0);">
             <div style="vertical-align:middle;">End session</div>
         </a>
     </div>

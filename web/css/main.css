@@ -114,6 +114,7 @@ a:hover{
 .menu-buttons a:hover{
     text-decoration: none;
     color: white;
+    opacity: 0.95;
 }
 .menu-buttons a:active{
     color: white;

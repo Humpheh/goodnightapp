@@ -4,7 +4,21 @@ include 'init.php';
 
 ?>
 
-<?php require 'header.php'; ?>
+<?php require 'header.php'; 
+
+  // form has been submitted
+if (!empty($_POST['password']) && !empty($_POST['username'])){
+    $userpass = $_POST['password'];
+    $username = $_POST['username'];
+
+    // try to login
+    if (Logins::login($username, $userpass)){
+        header("Location: index.php");
+        exit();
+    }
+}
+
+?>
 
 <?php if(Logins::isLoggedIn()){
     if (Logins::getCurrentSession() == NULL)
@@ -28,7 +42,7 @@ $("document").ready(function() {
 </script>
 
 <style>
-.body{
+body{
   overflow:hidden;
 }
 
@@ -58,7 +72,7 @@ $("document").ready(function() {
 <div class="top">
 
 <div class="container">
-                <center><h1 style="font-size:100px;font-weight:bold;font-style:italic;color:white;">Great Night!</h1>
+                <center><h1 style="font-size:100px;font-weight:bold;font-style:italic;color:black;">Great Night!</h1>
                 <span style="font-size:30px;"><a id="loginBtn">Login</a> - <a href="register.php">Register</a></span>
               </center>
             </div>

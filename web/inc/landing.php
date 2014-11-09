@@ -37,8 +37,10 @@
                 <?php echo $time; ?>
             </div>
             <div class="col-xs-3" style="padding:0;text-align:right;color:rgb(200,200,200);">
-                <span style="font-size:25px;line-height:0.95em;">250</span><br/>
-                calories
+                <span style="font-size:25px;line-height:0.95em;">
+                    <?php echo $row['session_calories']; ?> / <?php echo $row['session_unit']; ?>
+                </span><br/>
+                calories / units
             </div>
         </div>
 

@@ -172,14 +172,22 @@ class Logins {
         $test->bindValue(1, Logins::getCurrentSession(), PDO::PARAM_INT);
         $test->execute();
 
-        $query = "UPDATE session SET session_timefinish = CURRENT_TIMESTAMP WHERE session_id = ?";
+
         if ($test->rowCount() === 0) {
-            $query = "DELETE FROM session WHERE session_id = ?";
+            $stmt = DB::get()->prepare("DELETE FROM session WHERE session_id = ?");
+            $stmt->bindValue(1, Logins::getCurrentSession(), PDO::PARAM_INT);
+            $stmt->execute();
+        } else {
+            $stats = Tools::calcStats(Logins::getCurrentSession());
+
+            $stmt = DB::get()->prepare("UPDATE session SET session_timefinish = CURRENT_TIMESTAMP,
+                session_calories = ?, session_unit = ? WHERE session_id = ?");
+            $stmt->bindValue(1, $stats['calories'], PDO::PARAM_INT);
+            $stmt->bindValue(2, $stats['units'], PDO::PARAM_INT);
+            $stmt->bindValue(3, Logins::getCurrentSession(), PDO::PARAM_INT);
+            $stmt->execute();
         }
 
-        $stmt = DB::get()->prepare($query);
-        $stmt->bindValue(1, Logins::getCurrentSession(), PDO::PARAM_INT);
-        $stmt->execute();
         $_SESSION['sessionid'] = NULL;
     }
 

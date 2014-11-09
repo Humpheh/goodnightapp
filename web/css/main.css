@@ -1,5 +1,5 @@
 body {
-    background: #3b3b3b;
+    background-color: rgb(242, 242, 242) !important;
     color: white;
     font-family: 'Source Sans Pro', sans-serif;
     padding: 0;
@@ -45,11 +45,6 @@ body {
     display:box;
     box-pack:center;
     box-align:center;
-}
-
-.container{
-    padding-right:20% !important; 
-    padding-left:20% !important;
 }
 
 .btn{

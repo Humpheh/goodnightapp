@@ -71,15 +71,15 @@ body{
 
 <div class="top">
 
-<div class="container">
-                <center><h1 style="font-size:100px;font-weight:bold;font-style:italic;color:black;">Great Night!</h1>
-                <span style="font-size:30px;cursor:pointer;"><a id="loginBtn">Login</a> <i class="fa fa-beer"></i> <a href="register.php">Register</a></span>
+<div style="padding-top:15%;" class="container">
+                <center><h1 style="font-size:100px;font-weight:bold;font-style:italic;color:black;">Good Night!</h1>
+                <span style="font-size:30px;"><a style="cursor:pointer;" id="loginBtn">Login</a> <i class="fa fa-beer"></i> <a href="register.php">Register</a></span>
               </center>
             </div>
 </div>
 <div class="middle">
 
-<div class="container">
+<div style="padding-right:20%;padding-left:20%;"  class="container">
 <h1>Login</h1>
 
                 <form method="POST" role="form">

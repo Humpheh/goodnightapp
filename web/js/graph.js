@@ -3,7 +3,7 @@
  */
 
 var DrunkGraph = function (divElement) {
-    var currentBACLine = [], worstedBACLine, bestBACLine;
+    var currentBACLine = [], worstedBACLine, bestBACLine, maxLine = [];
     var startDateTime = null, endDateTime = null, interval = '6 hours';
 
     var getDataFromServer = function() {
@@ -28,10 +28,10 @@ var DrunkGraph = function (divElement) {
             drink_time = new Date(drink['sessdr_time']);
             ebac_before = parseFloat(drink['sessdr_ebac_before']);
             ebac_after = parseFloat(drink['sessdr_ebac_after']);
-            drinkname = drink['sessdr_drink_id'];
-            currentBACLine[ currentBACLine.length ] = [drink_time, ebac_before, null];
+            drinkname = drink['drink_name'];
+            currentBACLine[ currentBACLine.length ] = [drink_time, ebac_before, drinkname];
             currentBACLine[ currentBACLine.length ] = [drink_time, ebac_after, null];
-
+            maxLine[ maxLine.length ] = [drink_time, 0.4, null];
             if (startDateTime == null || startDateTime > drink_time) {
                 startDateTime = drink_time;
             }
@@ -41,8 +41,8 @@ var DrunkGraph = function (divElement) {
             }
         }
         startDateTime = new Date( startDateTime.getTime() - 60*60*1000 );
-        endDateTime = new Date( '2014-11-9 22:00:00' );
-        currentBACLine[ currentBACLine.length ] = [endDateTime, 0, null];
+        //endDateTime = new Date( '2014-11-9 22:00:00' );
+        //currentBACLine[ currentBACLine.length ] = [endDateTime, 0, null];
         interval = parseInt((endDateTime.getTime() - startDateTime.getTime())/60/60) ;
         console.log(currentBACLine);
     };
@@ -65,14 +65,14 @@ var DrunkGraph = function (divElement) {
     };
 
     var drawGraph = function() {
-        $.jqplot(divElement, [currentBACLine, worstedBACLine, bestBACLine], {
+        $.jqplot(divElement, [maxLine, currentBACLine, worstedBACLine, bestBACLine], {
             title:'EBAC',
-            seriesColors: ['#00749F', '#FF0000', '#3BFF00'],
+            seriesColors: ['#969696', '#00749F', '#FF0000', '#3BFF00'],
             axes:{
                 xaxis:{
                     renderer:$.jqplot.DateAxisRenderer,
                     tickOptions:{formatString:'%b %#d, %#I.%M %p'},
-                    min: startDateTime,
+                    //min: startDateTime,
                     tickInterval: interval
                 }
             },

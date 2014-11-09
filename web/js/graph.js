@@ -49,7 +49,10 @@ var DrunkGraph = function (divElement) {
     };
 
     var setDataDump = function () {
+        var startTime = currentBACLine[0][0];
         worstedBACLine = [];
+        maxAlcohol = ((endOfAlcohol.getTime() - startTime.getTime()) / 1000/60/60)* 0.017;
+        worstedBACLine[ worstedBACLine.length ] = [currentBACLine[0][0],maxAlcohol, null];
         worstedBACLine[ worstedBACLine.length ] = [endOfAlcohol, 0, null];
     };
 

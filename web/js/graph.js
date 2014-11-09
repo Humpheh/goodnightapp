@@ -54,6 +54,7 @@ var DrunkGraph = function (divElement) {
         worstedBACLine = [];
         maxAlcohol = ((endOfAlcohol.getTime() - startTime.getTime()) / 1000/60/60)* 0.017;
         maxAlcoholUser = (userMaxAlc > maxAlcohol) ? userMaxAlc: maxAlcohol;
+        maxAlcoholUser = maxAlcoholUser * 1.2;
         worstedBACLine[ worstedBACLine.length ] = [startDateTime,maxAlcohol, null];
         worstedBACLine[ worstedBACLine.length ] = [endOfAlcohol, 0, null];
         maxLine[ maxLine.length ] = [startDateTime, maxAlcoholUser, null];
@@ -88,7 +89,7 @@ var DrunkGraph = function (divElement) {
                 },
                 yaxis: {
                     min: 0,
-                    max: ultimateMax * 1.1 ,
+                    max: ultimateMax * 1.2 ,
                     label: "Estimated BAC",
                     labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
                     tickInterval: 0.1

@@ -10,6 +10,13 @@ body{
 }
 </style>
 
+<!--
+<div class="vhalign" style="position:fixed;top:0px;left:0px;height:100%;width:100%;background:rgba(0,0,0,0.5);z-index:5;">
+    <div style="margin:10%;background:rgb(50,50,50);">
+            Hello
+    </div>
+</div>-->
+
 <div class="first graph-holder" style="position:relative;">
     <?php include 'graph.php' ?>
     <div id="acc-left" class="drink-acceptor vhalign" style="left:0;">

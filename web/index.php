@@ -85,10 +85,10 @@ body{
 
                 <form method="POST" role="form">
                     <div class="form-group">
-                        <input type="text" name="username" placeholder="username" class="form-control"/>
+                        <input type="text" name="username" placeholder="Username" id="username" class="form-control"/>
                     </div>
                     <div class="form-group" style="padding-bottom: 30px;">
-                        <input type="password" name="password" placeholder="password" class="form-control"/>
+                        <input type="password" name="password" placeholder="Password" id="password" class="form-control"/>
                     </div>
                     <div style="padding-right:20%;padding-left:20%;"><input type="submit" name="login" value="Login" class="btn btn-block btn-primary"/></div>
                 </form>

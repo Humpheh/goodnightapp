@@ -129,10 +129,12 @@ class Tools {
         $sleep = $end - $latest;
             if ($sleep < 4.0) $sleep = 4.0;
 
-        echo $result . ' '; 
+        echo $sleep; 
         echo ($pv2 + ($sleep - 3)/6.0); 
         
         $result /= ($pv2 + ($sleep - 3)/6.0);
+        
+        echo result . ' '; 
         
         
         

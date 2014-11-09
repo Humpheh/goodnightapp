@@ -1,10 +1,8 @@
 <?php
 
-include 'init.php';
+require 'init.php';
 
-?>
-
-<?php require 'header.php'; 
+require 'header.php';
 
   // form has been submitted
 if (!empty($_POST['password']) && !empty($_POST['username'])){
@@ -29,16 +27,16 @@ if (!empty($_POST['password']) && !empty($_POST['username'])){
 <meta name="viewport" content="width=device-width, height=device-height">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <script type="text/javascript">
-$("document").ready(function() {      
-        
+$("document").ready(function() {
+
         $('#loginBtn').click(function(){
-                       
+
           $('html, body').animate({
             scrollTop: $(".middle").offset().top
-          }, 500);          
-           
-                       
-         });        
+          }, 500);
+
+
+         });
 });
 </script>
 
@@ -51,20 +49,20 @@ $("document").ready(function() {
 .top{
   height:100%;
   }
-  
+
 
 .middle{
   height:100%;
   }
-  
-  
+
+
 .top-title, .middle-title, .bottom-title{
   cursor:pointer;
   margin-top:300px;
   text-align:center;
   text-decoration:underline;
   font-size:32px;
-  font-weight:700;} 
+  font-weight:700;}
 </style>
 
 <div id="home" class="top">

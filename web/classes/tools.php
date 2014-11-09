@@ -23,12 +23,14 @@ class Tools {
             "units" => round($units,1));
     }
 
-    public static function getHistory(){
+    public static function getHistory($id = NULL){
+        if ($id == NULL) $id = Logins::getCurrentSession();
+
         $stmt = DB::get()->prepare("SELECT sessiondrink.*, drink.* FROM sessiondrink
             LEFT JOIN drink ON sessdr_drink_id = drink_id
             WHERE sessdr_session_id = ?
             ORDER BY sessdr_time DESC");
-        $stmt->bindValue(1, Logins::getCurrentSession(), PDO::PARAM_INT);
+        $stmt->bindValue(1, $id, PDO::PARAM_INT);
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -38,7 +40,7 @@ class Tools {
         foreach ($result as $row){
 
             $out .= '<div class="history-item">';
-            if($row == reset($result)){
+            if($row == reset($result) && $id == Logins::getCurrentSession()){
                 $out .= '<a href="#" class="x remove-last-button">
                 <div class="vhalign"><span class="glyphicon glyphicon-remove"></span></div>
                 </a>';

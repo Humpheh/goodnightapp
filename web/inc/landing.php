@@ -76,8 +76,9 @@ body{
     tomorrow.
 
     <div style="position:fixed;bottom:4%;width:100%;">
-        <a style="cursor:pointer;font-size:20px;" onclick="document.forms[0].submit()" style="display:table;width:100%;height:100%;text-align:center;">
-            <center>Start Session</a></center><br>
+        <center>
+        <a class="btn ibtn btn-default" style="cursor:pointer;font-size:20px;" onclick="document.forms[0].submit()" id="loginBtn">
+            <center>Start Session</a></center>
         <!--<span style="color:#428bca;vertical-align:middle;font-size:80px;" class="glyphicon glyphicon-plus">Start Session</span>-->
     </a>
     </div>

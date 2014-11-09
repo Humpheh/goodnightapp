@@ -32,7 +32,7 @@ body{
         background: rgb(40, 40, 40);
     }
 </style>
-<div style="position:relative;height:65%;overflow:scroll;overflow-x:hidden;border-top:1px solid black;border-bottom:1px solid black;" class="session-list">
+<div style="position:relative;height:68%;overflow:scroll;overflow-x:hidden;border-top:1px solid black;border-bottom:1px solid black;" class="session-list">
 
     <?php
 
@@ -63,7 +63,7 @@ body{
     } ?>
 </div>
 
-<form action="action/newsession.php" method="POST" style="color:white;font-size:17px;text-align:center;padding:10px;">
+<form action="action/newsession.php" method="POST" style="color:white;font-size:17px;text-align:center;padding:10px;padding-top:45px;">
     I want to feel great by
     <select name="hr">
         <option value="-1">-</option>
@@ -76,11 +76,11 @@ body{
     tomorrow.
 
     <div style="position:fixed;bottom:4%;width:100%;">
-        <a style="cursor:pointer;font-size:20px;" onclick="document.forms[0].submit()" style="display:table;width:100%;height:100%;text-align:center;">
-        <center><span style="color:#428bca;font-size:60px;" class="glyphicon glyphicon-plus"></span></center>
-
-        <!--<span style="color:#428bca;vertical-align:middle;font-size:80px;" class="glyphicon glyphicon-plus">Start Session</span>-->
-    </a>
+        <center>
+        <a class="btn ibtn btn-default" style="cursor:pointer;font-size:20px;" onclick="document.forms[0].submit()">
+            Start Session
+        </a>
+        </center>
     </div>
 </form>
 </div>

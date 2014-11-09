@@ -12,8 +12,6 @@ include 'init.php';
     else
         include 'inc/session.php';
 } else { ?>
-    include 'inc/landing.php';
-
     <div style="height:100%;width:100%;text-align:center;display:table">
         <div style="display:table-cell;vertical-align:middle;">
             <div class="container">

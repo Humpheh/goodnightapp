@@ -144,7 +144,6 @@ body {
 }
 
 body{
-    overflow:hidden;
     background-image: url('background2.jpg');
     background-repeat: no-repeat;
     background-size: cover;

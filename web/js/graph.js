@@ -40,28 +40,16 @@ var DrunkGraph = function (divElement) {
                 endDateTime = drink_time;
             }
         }
-        startDateTime = new Date( startDateTime.getTime() - 60*60*1000 );
-        //endDateTime = new Date( '2014-11-9 22:00:00' );
-        //currentBACLine[ currentBACLine.length ] = [endDateTime, 0, null];
+        if (endOfAlcohol != null && endOfAlcohol > endDateTime)
+            endDateTime = endOfAlcohol;
+
+        var holeDuration =  endDateTime.getTime() - startDateTime.getTime();
+        startDateTime = new Date(startDateTime.getTime() - holeDuration * 0.1);
         interval = parseInt((endDateTime.getTime() - startDateTime.getTime())/60/60) ;
-        console.log(currentBACLine);
     };
 
-    var setDataDump = function () { //TODO: Get real data
-        worstedBACLine = new Array();//currentBACLine.slice(0);
-        worstedBACLine[0] = currentBACLine[currentBACLine.length -2];
-        worstedBACLine[1] = [
-            ( new Date(worstedBACLine[0][0].getTime() + 10*(worstedBACLine[0][0].getTime() - currentBACLine[currentBACLine.length - 3][0].getTime())) ),
-            currentBACLine[ currentBACLine.length - 2][1] + ( currentBACLine[ currentBACLine.length - 2][1] - currentBACLine[ currentBACLine.length - 3][1] ),
-            null
-        ];
-        console.log(worstedBACLine);
-        /*bestBACLine = new Array();//currentBACLine.slice(0);
-         bestBACLine[0] = currentBACLine[currentBACLine.length - 1];
-         var bestBACAdd = [['2014-11-8 11:00PM', 0.9, null], ['2014-11-9 00:00AM', 0.2, null], ['2014-11-9 01:00AM', 0.1, null]];
-         for (i = 0; i < bestBACAdd.length; i++) {
-         bestBACLine[bestBACLine.length] = bestBACAdd[i];
-         }*/
+    var setDataDump = function () {
+
     };
 
     var drawGraph = function() {
@@ -72,7 +60,7 @@ var DrunkGraph = function (divElement) {
                 xaxis:{
                     renderer:$.jqplot.DateAxisRenderer,
                     tickOptions:{formatString:'%b %#d, %#I.%M %p'},
-                    //min: startDateTime,
+                    min: startDateTime,
                     tickInterval: interval
                 }
             },
@@ -80,7 +68,9 @@ var DrunkGraph = function (divElement) {
                 showMarker:true,
                 pointLabels:{ show:true, location:'s', ypadding:3 }
             },
-            series:[]
+            series:[
+                {showMarker: false}
+            ]
         });
     };
 

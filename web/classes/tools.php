@@ -1,5 +1,11 @@
 <?php
 
+$stmt = DB::get()->query('SELECT session_soberby FROM session WHERE session_id = '.Logins::getCurrentSession());
+    $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $end = $array[0]['session_soberby'];
+
+
+
 class Tools {
     public static function calcStats($sessionid){
         $stmt = DB::get()->prepare("SELECT sessiondrink.*, drink.* FROM sessiondrink
@@ -124,7 +130,7 @@ class Tools {
         echo $count . ' '; 
         echo $t . ' '; 
         
-        $sleep = ;
+        $sleep = $end - $latest;
             if ($sleep < 4.0) $sleep = 4.0;
 
         $result /= ($pv2 + ($sleep - 3)/6.0);

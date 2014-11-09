@@ -43,7 +43,7 @@ class Tools {
         foreach ($result as $row){
 
             $out .= '<div class="history-item">';
-            if(!Logins::isSessionTemp()){
+            if($row == reset($result) && !Logins::isSessionTemp()){
                 $out .= '<a href="#" class="x remove-last-button">
                 <div class="vhalign"><span class="glyphicon glyphicon-remove"></span></div>
                 </a>';

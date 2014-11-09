@@ -2,7 +2,7 @@
 <div class="valign1" style="padding-bottom: 15px;" >
     <div>
         <span style="top: 5px;position: relative;left: 5px;"><a href="logout.php">Logout</a></span><center>
-        <span style="padding-bottom:15px;font-weight: bold;font-style: italic;font-size:30px;color:rgb(195, 193, 193);">Welcome back <?php echo Logins::getCurrentUsername(); ?>.</span><br>
+        <span style="padding-bottom:15px;font-weight: bold;font-style: italic;font-size:20px;color:rgb(195, 193, 193);">Welcome back <?php echo Logins::getCurrentUsername(); ?>.</span><br>
         </center>
     </div>
 </div>
@@ -17,7 +17,7 @@
     }
 </style>
 
-<div style="height:50%;overflow:scroll;" class="session-list">
+<div style="height:65%;overflow:scroll;" class="session-list">
     <?php
 
     $stmt = DB::get()->prepare("SELECT * FROM session WHERE session_user_id = ?

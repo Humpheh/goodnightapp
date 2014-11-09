@@ -129,6 +129,9 @@ $(function() {
 
                 $("#units .value").html(obj.units);
                 $("#calories .value").html(obj.calories);
+                var graph = DrunkGraph('drunkChart');
+                $('#drunkChart').html("");
+                graph.draw();
             });
 
         }

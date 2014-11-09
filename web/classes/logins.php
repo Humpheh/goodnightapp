@@ -78,6 +78,8 @@ class Logins {
         $_SESSION['user'] = $row;
         $_SESSION['user_loggedin'] = true;
 
+        $_SESSION['user_maxunits'] = $row['user_gender'] == 'female' ? 3 : 4;
+
         $stmt = DB::get()->prepare("SELECT session_id FROM session WHERE
             session_timefinish IS NULL AND session_user_id = ?");
         $stmt->bindValue(1, $_SESSION['user']['user_id'], PDO::FETCH_ASSOC);
@@ -179,5 +181,9 @@ class Logins {
         $stmt->bindValue(1, Logins::getCurrentSession(), PDO::PARAM_INT);
         $stmt->execute();
         $_SESSION['sessionid'] = NULL;
+    }
+
+    public static function getMaxUnits(){
+        return $_SESSION['user_maxunits'];
     }
 }

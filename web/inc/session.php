@@ -89,6 +89,11 @@ $stats = Tools::calcStats(Logins::getCurrentSession());
 .drink.sel{
     box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 }
+
+.fader{
+    -webkit-transition: background ease-in-out 0.5s;
+    transition: background ease-in-out 0.5s;
+}
 </style>
 
 <script>
@@ -132,11 +137,41 @@ $(function() {
                 var graph = DrunkGraph('drunkChart');
                 $('#drunkChart').html("");
                 graph.draw();
+
+                per = obj.units / <?php echo Logins::getMaxUnits(); ?>;
+                col = getColorForPercentage(per);
+                $('#units').css('background', col);
             });
 
         }
     });
 });
+
+var percentColors = [,
+    { pct: 0.0, color: { r: 0x00, g: 0xff, b: 0 } },
+    { pct: 0.5, color: { r: 0xff, g: 0xff, b: 0 } },
+    { pct: 1.0, color: { r: 0xff, g: 0x00, b: 0 } }];
+
+var getColorForPercentage = function(pct) {
+    for (var i = 1; i < percentColors.length - 1; i++) {
+        if (pct < percentColors[i].pct) {
+            break;
+        }
+    }
+    var lower = percentColors[i - 1];
+    var upper = percentColors[i];
+    var range = upper.pct - lower.pct;
+    var rangePct = (pct - lower.pct) / range;
+    var pctLower = 1 - rangePct;
+    var pctUpper = rangePct;
+    var color = {
+        r: Math.floor(lower.color.r * pctLower + upper.color.r * pctUpper),
+        g: Math.floor(lower.color.g * pctLower + upper.color.g * pctUpper),
+        b: Math.floor(lower.color.b * pctLower + upper.color.b * pctUpper)
+    };
+    return 'rgb(' + [color.r, color.g, color.b].join(',') + ')';
+    // or output as hex if preferred
+}
 
 </script>
 
@@ -164,11 +199,11 @@ $(function() {
     </div>
 </div>
 </div>
-<div style="width:100%;margin:0;height:10%;background:rgb(50,50,50);font-size:20px;" class="row">
-    <div id="units" href="" style="height:100%;color:white;padding:0;text-align:center;" class="col-xs-3 vhalign">
+<div style="text-shadow:0 1px 0 rgba(0,0,0,0.5);width:100%;margin:0;height:10%;background:rgb(50,50,50);font-size:20px;" class="row">
+    <div id="units" href="" style="height:100%;color:white;padding:0;text-align:center;" class="col-xs-3 vhalign fader">
         <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $stats['units']; ?></span><br/>
         <span style="font-size:15px;line-height:0.9em;">units</span></div>
-    <div id="calories" href="" style="height:100%;color:white;background:rgb(60,60,60);text-align:center;padding:0;" class="col-xs-3 vhalign">
+    <div id="calories" href="" style="height:100%;color:white;background:rgb(60,60,60);text-align:center;padding:0;" class="col-xs-3 vhalign fader">
         <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $stats['calories']; ?></span><br/>
         <span style="font-size:15px;line-height:0.9em;">calories</span></div>
     <a href="action/endsession.php" style="height:100%;color:white;padding:0;" class="col-xs-6 vhalign">Go home.</a>

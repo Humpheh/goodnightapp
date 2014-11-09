@@ -3,6 +3,22 @@
     $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $max = 0.5;
     $end = $array[0]['session_soberby'];
+
+    $weight = Logins::getCurrentUserWeight();
+    $gender = Logins::getCurrentUserGender();
+    $maxunits = 0;
+    $bw = 0;
+    if ($gender == 'male') {
+        $maxunits = 4;
+        $bw = 0.58;
+    } else {
+        $maxunits = 3;
+        $bw = 0.49;
+    }
+
+    $num = 0.806*$maxunits*1.2;
+    $den = $bw * $weight;
+    $maxbac = $num/$den;
 ?>
 <div id="drunkChart" style=""></div>
 <script src="js/plotting/jquery.jqplot.js"></script>
@@ -17,6 +33,7 @@
 <script>
     endOfAlcohol = new Date("<?php echo $end; ?>");
     maxAlcohol = <?php echo $max ?>;
+    maxBac = <?php echo $maxbac ?>;
     $(document).ready(function() {
         var graph = DrunkGraph('drunkChart');
         graph.draw();

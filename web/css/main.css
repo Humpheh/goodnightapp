@@ -143,12 +143,17 @@ body {
 
 body{
     overflow:hidden;
+    background-image: url('background2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
 }
 
 .graph-holder{
     height: 60%;
-    background: black;
     position: relative;
+    color:rgb(195, 193, 193);
 }
 .drink-acceptor.hover{
     border: 4px solid rgba(255,255,255,0.5);

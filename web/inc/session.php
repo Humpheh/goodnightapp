@@ -14,7 +14,7 @@ $stats = Tools::calcStats(Logins::getCurrentSession());
         <span class="text">1 Pint</span><br/>
         <span class="ml">500ml</span>
     </div>
-    <div id="info" style="padding:30px;display:none;position:absolute;width:100%;height:100%;top:0;background:rgb(200,200,200);">
+    <div id="info" style="padding:30px;display:none;position:absolute;width:100%;height:100%;top:0;background:rgb(200,200,200);color:black;">
 
     </div>
 </div>

@@ -107,7 +107,7 @@ class Tools {
         $w = $count/4;
 
         $t = (($latest+1 - $earliest)/3600);
-        if ($t < 1 ) $t = 1;
+        if ($t <= 1 ) $t = 1;
         $dtime = $w * (1 / $t);
 
 
@@ -120,7 +120,7 @@ class Tools {
         echo $pv1 . ' ';
         echo $hangover . ' ';
         echo $count . ' '; 
-        
+        echo $t . ' '; 
         
         $result /= ($pv2 + ($t-3)/6);
         

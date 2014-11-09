@@ -26,18 +26,6 @@ if (!empty($_POST['password']) && !empty($_POST['username'])){
     else
         include 'inc/session.php';
 } else { ?>
-<<<<<<< Updated upstream
-    <div style="height:100%;width:100%;text-align:center;display:table">
-        <div style="display:table-cell;vertical-align:middle;">
-            <div class="container">
-                <h1 style="font-size:100px;font-weight:bold;font-style:italic;">Hello</h1>
-                <span style="font-size:30px;"><a href="login.php">Login</a> - <a href="register.php">Register</a></span>
-
-                <a href="#" style="display:block;font-weight:normal;font-size:30px;width:100%;position:absolute;padding:15px 0;bottom:0px;">
-                    Next<br/>
-                    <span class="glyphicon glyphicon-chevron-down"></span>
-                </a>
-=======
 <meta name="viewport" content="width=device-width, height=device-height">
 <script type="text/javascript">
 $("document").ready(function() {      
@@ -87,7 +75,6 @@ body{
                 <center><h1 style="font-size:100px;font-weight:bold;font-style:italic;color:black;">Great Night!</h1>
                 <span style="font-size:30px;cursor:pointer;"><a id="loginBtn">Login</a> <i class="fa fa-beer"></i> <a href="register.php">Register</a></span>
               </center>
->>>>>>> Stashed changes
             </div>
 </div>
 <div class="middle">

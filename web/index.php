@@ -71,22 +71,22 @@ body{
 
 <div class="top">
 
-<div style="padding-top:15%;" class="container">
-                <center><h1 style="font-size:100px;font-weight:bold;font-style:italic;color:black;">Good Night!</h1>
+<div style="padding-top:13%;" class="container">
+                <center><h1 style="padding-bottom:30px;font-size:100px;font-weight:bold;font-style:italic;color:black;">Good night.</h1>
                 <span style="font-size:30px;"><a style="cursor:pointer;" id="loginBtn">Login</a> <i class="fa fa-beer"></i> <a href="register.php">Register</a></span>
               </center>
             </div>
 </div>
 <div class="middle">
 
-<div style="padding-right:20%;padding-left:20%;"  class="container">
-<h1>Login</h1>
+<div style="padding-top:15%;padding-right:20%;padding-left:20%;"  class="container">
+<center><b><h1 style = "padding-bottom:30px;font-weight: bold;font-style: italic;font-size:60px;">Login </h1></b></center>
 
                 <form method="POST" role="form">
                     <div class="form-group">
                         <input type="text" name="username" placeholder="username" class="form-control"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="padding-bottom: 30px;">
                         <input type="password" name="password" placeholder="password" class="form-control"/>
                     </div>
                     <div style="padding-right:20%;padding-left:20%;"><input type="submit" name="login" value="Login" class="btn btn-block btn-primary"/></div>

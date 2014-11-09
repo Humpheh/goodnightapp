@@ -33,6 +33,8 @@
 
 							$("#units .value").html(obj.units);
 							$("#calories .value").html(obj.calories);
+							$("#tot-units .value").html(obj.totunits);
+							$("#tot-calories .value").html(obj.totcalories);
 							var graph = DrunkGraph('drunkChart');
 							$('#drunkChart').html("");
 							graph.draw();

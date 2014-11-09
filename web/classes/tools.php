@@ -1,14 +1,44 @@
 <?php
 
+<<<<<<< Updated upstream
 
 
 $stmt = DB::get()->query('SELECT session_soberby FROM session WHERE session_id = '.Logins::getCurrentSession());
 $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $end = $array[0]['session_soberby'];
 
+=======
+>>>>>>> Stashed changes
 
 
 class Tools {
+
+    public static function calcStatsUser($userid){
+        $stmt = DB::get()->prepare("SELECT sessiondrink.*, drink.*, session.* FROM sessiondrink
+            LEFT JOIN drink ON sessdr_drink_id = drink_id
+            LEFT JOIN session on sessdr_session_id = session_id
+            WHERE session_user_id = ?");
+        $stmt->bindValue(1, $userid, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $calories = 0.0;
+        $units = 0.0;
+
+        $count = 0;
+        foreach ($result as $row){
+            $calories += floatval($row['sessdr_volume'])/1000 * floatval($row['drink_calories']);
+            $units += floatval($row['sessdr_volume']) * floatval($row['drink_percent']) / 1000;
+            $count++;
+        }
+
+        return array(
+            "calories" => round($calories),
+            "units" => round($units,1),
+            "count" => $count);
+    }
+
     public static function calcStats($sessionid){
         $stmt = DB::get()->prepare("SELECT sessiondrink.*, drink.* FROM sessiondrink
             LEFT JOIN drink ON sessdr_drink_id = drink_id
@@ -79,6 +109,12 @@ class Tools {
     }
 
     public static function hangoverness($sessionid){
+
+        $stmt = DB::get()->query("SELECT session_soberby FROM session WHERE session_id = ".Logins::getCurrentSession());
+            $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $end = $array[0]['session_soberby'];
+
+
         $bstmt = DB::get()->prepare("SELECT * FROM session WHERE session_id = ?");
         $bstmt->bindValue(1, $sessionid, PDO::PARAM_INT);
         $bstmt->execute();
@@ -125,7 +161,13 @@ class Tools {
         $result = $dtime + ($max / $pv1) + ($hangover / ($count * 16)) - ($water / 4000);
 
 
+<<<<<<< Updated upstream
         
+=======
+        echo $count . ' ';
+        echo $t . ' ';
+
+>>>>>>> Stashed changes
         $sleep = $end - $latest;
             if ($sleep < 4.0) $sleep = 4.0;
 
@@ -133,6 +175,7 @@ class Tools {
         echo ($pv2 + ($sleep - 3)/6.0); 
         
         $result /= ($pv2 + ($sleep - 3)/6.0);
+<<<<<<< Updated upstream
         
         echo result . ' '; 
         
@@ -141,6 +184,14 @@ class Tools {
         
         
         
+=======
+
+
+
+
+
+
+>>>>>>> Stashed changes
 
 
         return $result;

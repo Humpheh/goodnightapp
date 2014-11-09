@@ -83,10 +83,13 @@ body{
             </div>
         </div>
     </div>
-    <div style="height:100%;color:white;padding:0;text-align:center;background:rgb(50,50,50);" class="col-xs-6 vhalign">
-        <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $stats['units']; ?></span><br/>
-        <span style="font-size:15px;line-height:0.9em;">units</span></div>
-    </div>
+    <?php $uStats = Tools::calcStatsUser(Logins::getCurrentUserID()); ?>
+    <div id="tot-units" style="height:100%;color:white;background:rgb(60,60,60);padding:0;text-align:center;" class="col-xs-3 vhalign fader">
+        <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $uStats['units']; ?></span><br/>
+        <span style="font-size:15px;line-height:0.9em;">total units</span></div>
+    <div id="tot-calories" style="height:100%;color:white;border:1px solid rgb(50,50,50);text-align:center;padding:0;" class="col-xs-3 vhalign fader">
+        <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $uStats['calories']; ?></span><br/>
+        <span style="font-size:15px;line-height:0.9em;">total cal</span></div>
 </div>
 
 

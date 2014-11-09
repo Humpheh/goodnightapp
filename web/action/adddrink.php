@@ -81,12 +81,15 @@ $stmt->bindValue(5, $newEbac, PDO::PARAM_STR);
 $stmt->execute();
 
 $stats = Tools::calcStats($sessionid);
+$statsA = Tools::calcStatsUser(Logins::getCurrentUserID());
 
 $json = "{";
 $json .= '"oldEbac" : ' . $oldEbac . ',';
 $json .= '"newEbac" : ' . $newEbac . ',';
 $json .= '"units" : ' . $stats['units'] . ',';
 $json .= '"calories" : ' . $stats['calories'] . ',';
+$json .= '"totunits" : ' . $statsA['units'] . ',';
+$json .= '"totcalories" : ' . $statsA['calories'] . ',';
 $json .= '"history" : ' . json_encode(Tools::getHistory()) . '';
 $json .= '}';
 

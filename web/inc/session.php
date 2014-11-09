@@ -1,3 +1,9 @@
+<?php
+
+$stats = Tools::calcStats(Logins::getCurrentSession());
+
+?>
+
 <div class="graph-holder">
     <?php include 'graph.php' ?>
     <div id="acc-left" class="drink-acceptor vhalign" style="left:0;">
@@ -17,11 +23,12 @@
     position: relative;
 }
 .drink-acceptor.hover{
-    border: 4px solid rgb(60, 60, 170);
+    border: 4px solid rgba(255,255,255,0.5);
     opacity: 1;
 }
 .drink-acceptor.active{
     border: 10px solid white;
+    background: rgba(0, 0, 0, 0.75);
 }
 
 .drink-acceptor{
@@ -30,8 +37,9 @@
     width: 50%;
     height: 100%;
     top: 0;
-    -webkit-transition: border ease-in-out 0.25s, opacity ease-in-out 0.15s;
-    transition: border ease-in-out 0.25s, opacity ease-in-out 0.15s;
+    background: rgba(0, 0, 0, 0.4);
+    -webkit-transition: border ease-in-out 0.25s, opacity ease-in-out 0.15s, background ease-in-out 0.15s;
+    transition: border ease-in-out 0.25s, opacity ease-in-out 0.15s, background ease-in-out 0.15s;
     border: 0 solid black;
     opacity: 0;
 }
@@ -117,7 +125,10 @@ $(function() {
                 drinkid: $(ui.draggable).data( "drinkid" ),
                 volume: vol
             }).done(function( data ) {
-                alert( "Data Loaded: " + data );
+                var obj = jQuery.parseJSON( data );
+
+                $("#units .value").html(obj.units);
+                $("#calories .value").html(obj.calories);
             });
 
         }
@@ -151,7 +162,11 @@ $(function() {
 </div>
 </div>
 <div style="width:100%;margin:0;height:10%;background:rgb(50,50,50);font-size:20px;" class="row">
-    <div href="" style="height:100%;color:white;padding:0;" class="col-xs-3 vhalign">5.4<br/><span style="font-size:15px;">units</span></div>
-    <div href="" style="height:100%;color:white;background:rgb(60,60,60);padding:0;" class="col-xs-3 vhalign"><span style="font-size:15px;">500 calories</span></div>
+    <div id="units" href="" style="height:100%;color:white;padding:0;text-align:center;" class="col-xs-3 vhalign">
+        <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $stats['units']; ?></span><br/>
+        <span style="font-size:15px;line-height:0.9em;">units</span></div>
+    <div id="calories" href="" style="height:100%;color:white;background:rgb(60,60,60);text-align:center;padding:0;" class="col-xs-3 vhalign">
+        <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $stats['calories']; ?></span><br/>
+        <span style="font-size:15px;line-height:0.9em;">calories</span></div>
     <a href="action/endsession.php" style="height:100%;color:white;padding:0;" class="col-xs-6 vhalign">Go home.</a>
 </div>

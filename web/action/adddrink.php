@@ -23,6 +23,7 @@ function calcSum($sessionid){
     $stmt->bindValue(1, $sessionid, PDO::PARAM_INT);
     $stmt->execute();
 
+
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $start = time();
@@ -40,7 +41,7 @@ function calcSum($sessionid){
     $sd = $sum;
     return array(
         "sum" => $sum,
-        "TIME" => $start);
+        "time" => $start);
 }
 
 $sessionid = Logins::getCurrentSession();
@@ -48,17 +49,20 @@ $sessionid = Logins::getCurrentSession();
 $drinkid = intval($_POST['drinkid']);
 $volume = floatval($_POST['volume']);
 
-
 // get the percentage of the drink from the database
 $per = DB::get()->prepare("SELECT drink_percent FROM drink WHERE drink_id = ?" );
 $per->bindValue(1, $drinkid, PDO::PARAM_INT);
 $per->execute();
 $percent = floatval($per->fetch(PDO::FETCH_ASSOC)['drink_percent']) / 100;
 
-$oSum = calcSum(1);
-$time = (time()-$oSum["TIME"]) / (60*60);
+
+$oSum = calcSum($sessionid);
+$time = (time()-$oSum["time"]) / (60*60);
 
 $oldEbac = ebac($oSum["sum"], Logins::getCurrentUserGender(), Logins::getCurrentUserWeight(), $time);
+
+//print_r($oSum);
+//exit();
 
 // if old ebac less than 0, set start time to current time
 if ($oldEbac <= 0){
@@ -84,4 +88,13 @@ $stmt->bindValue(4, $oldEbac, PDO::PARAM_STR);
 $stmt->bindValue(5, $newEbac, PDO::PARAM_STR);
 $stmt->execute();
 
-echo $oldEbac . '<br/>' . $newEbac;
+$stats = Tools::calcStats($sessionid);
+
+$json = "{";
+$json .= '"oldEbac" : ' . $oldEbac . ',';
+$json .= '"newEbac" : ' . $newEbac . ',';
+$json .= '"units" : ' . $stats['units'] . ',';
+$json .= '"calories" : ' . $stats['calories'];
+$json .= '}';
+
+echo $json;

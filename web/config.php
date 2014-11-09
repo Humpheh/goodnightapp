@@ -10,7 +10,7 @@ class Conf{
 	// MySQL Database Settings.
 	const DB_HOST = "127.0.0.1";
 	const DB_USER = "root";
-	const DB_PASS = "2632315616";
+	const DB_PASS = "";
 	const DB_DATABASE = "goodnighthack";
 
 	// Base URL on the server.

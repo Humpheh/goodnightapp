@@ -34,6 +34,7 @@ $("document").ready(function() {
           $('html, body').animate({
             scrollTop: $(".middle").offset().top
           }, 500);
+          $("#username").focus();
 
 
          });

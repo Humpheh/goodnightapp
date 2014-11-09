@@ -71,7 +71,7 @@ $("document").ready(function() {
 
 <div style="padding-top:13%;" class="container">
                 <center><h1 style="font-size:80px;font-weight:bold;font-style:italic;color:rgb(195, 193, 193);">Good night.</h1>
-                  <p style="padding-bottom:30px;color:rgb(195, 193, 193);;">For good nights, and great mornings.</p>
+                  <p style="padding-bottom:30px;color:rgb(195, 193, 193);">For good nights, and great mornings.</p>
                 <span style="font-size:30px;"><a style="cursor:pointer;" id="loginBtn">Get Started</a></span>
               </center>
             </div>

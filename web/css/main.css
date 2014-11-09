@@ -1,5 +1,4 @@
 body {
-    background-color: rgb(242, 242, 242) !important;
     color: white;
     font-family: 'Source Sans Pro', sans-serif;
     padding: 0;
@@ -31,6 +30,14 @@ body {
 
 #landing{
         background-image: url('background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height:100%;
+}
+
+#session{
+        background-image: url('background2.jpg') !important;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;

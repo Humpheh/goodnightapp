@@ -37,12 +37,17 @@ var scrolled = false;
 <style>
 body{
     overflow:hidden;
+    background-image: url('css/background2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
 }
 
 .graph-holder{
     height: 60%;
-    background: black;
     position: relative;
+    color:rgb(195, 193, 193);
 }
 .drink-acceptor.hover{
     border: 4px solid rgba(255,255,255,0.5);
@@ -213,7 +218,7 @@ var getColorForPercentage = function(pct) {
 
 </script>
 
-<div style="overflow-y: hidden;background:rgb(240,240,240);">
+<div style="overflow-y: hidden;background-color:rgba(240,240,240,0.5);">
 <div class="valign" style="height:30%;overflow-X: visible;">
     <div style="white-space: nowrap;display:inline-block;">
         <?php

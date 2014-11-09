@@ -72,6 +72,8 @@ $(function() {
             }).done(function( data ) {
                 var obj = jQuery.parseJSON( data );
 
+                var unitsb = $("#units .value").html();
+
                 $("#units .value").html(obj.units);
                 $("#calories .value").html(obj.calories);
                 var graph = DrunkGraph('drunkChart');
@@ -82,12 +84,19 @@ $(function() {
                 col = getColorForPercentage(per);
                 $('#units').css('background', col);
 
+                if ($("#units .value").html() > MAXUNITS && unitsb < MAXUNITS)
+                    $('#popup').css("display", "inline-block");
+
                 $("#history").html(obj.history);
             });
 
         }
     });
 });
+
+var close_popup = function(){
+    $('#popup').css("display", "none");
+};
 
 var percentColors = [,
     { pct: 0.0, color: { r: 0x00, g: 0xff, b: 0 } },

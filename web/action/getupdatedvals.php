@@ -2,7 +2,7 @@
 
 include '../init.php';
 
-$stats = Tools::calcStats($sessionid);
+$stats = Tools::calcStats(Logins::getCurrentSession());
 
 $json = "{";
 $json .= '"units" : ' . $stats['units'] . ',';

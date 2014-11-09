@@ -114,9 +114,17 @@ class Tools {
 
         $result = $dtime + ($max / $pv1) + ($hangover / ($count * 16)) - ($water / 4000);
 
-        echo $t . ' ';
+        echo $result . ' ';
+        echo $dtime . ' '; 
+        echo $max . ' ';
+        echo $pv1 . ' ';
+        echo $hangover . ' ';
+        echo $count . ' '; 
+        
+        
         $result /= ($pv2 + ($t-3)/6);
-        //echo ((strtotime($sess['session_soberby'])-$latest) / 360);
+        
+
         return $result;
     }
 }

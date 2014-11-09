@@ -150,9 +150,9 @@ class Logins {
 
     public static function newSession($hr, $min){
 
-
+        if ($hr == -1 || $min == -1){ $hr = 7; $min = 0; }
         $time = strtotime(date('Y-m-d')) + 24*60*60 + $hr*60*60 + $min*60;
-        if ($hr == -1 || $min == -1) $time = NULL;
+
 
 
         $stmt = DB::get()->prepare("INSERT INTO session (session_user_id, session_soberby) VALUES (?, ?)");

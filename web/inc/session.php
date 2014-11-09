@@ -100,7 +100,7 @@ body{
         </a>
     </div>
 
-    <div id="history" class="history" style="height:70%;background-image: url('background2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;height: 100%;
+    <div id="history" class="history" style="height:70%;background-image: url('css/background2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;height: 100%;
 }">
         <?php
         echo Tools::getHistory();

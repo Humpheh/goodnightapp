@@ -20,7 +20,10 @@
     $den = $bw * $weight;
     $maxbac = $num/$den;
 ?>
-<center><div id="drunkChart" style=""></div></center>
+<center><div id="drunkChart" style="">
+<div id="tutorial" style="background:url('images/tutorial.png');background-position:center;
+    background-repeat:no-repeat;background-size:contain;position:absolute;bottom:0;height:100%;width:100%;"> </div>
+</div></center>
 <script src="js/plotting/jquery.jqplot.js"></script>
 <script src="js/plotting/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script src="js/plotting/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>

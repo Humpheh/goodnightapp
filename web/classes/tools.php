@@ -13,15 +13,17 @@ class Tools {
         $calories = 0.0;
         $units = 0.0;
 
-
+        $count = 0;
         foreach ($result as $row){
             $calories += floatval($row['sessdr_volume'])/1000 * floatval($row['drink_calories']);
             $units += floatval($row['sessdr_volume']) * floatval($row['drink_percent']) / 1000;
+            $count++;
         }
 
         return array(
             "calories" => round($calories),
-            "units" => round($units,1));
+            "units" => round($units,1),
+            "count" => $count);
     }
 
     public static function getHistory($id = NULL){
@@ -115,15 +117,15 @@ class Tools {
         $result = $dtime + ($max / $pv1) + ($hangover / ($count * 16)) - ($water / 4000);
 
         echo $result . ' ';
-        echo $dtime . ' '; 
+        echo $dtime . ' ';
         echo $max . ' ';
         echo $pv1 . ' ';
         echo $hangover . ' ';
-        echo $count . ' '; 
-        
-        
+        echo $count . ' ';
+
+
         $result /= ($pv2 + ($t-3)/6);
-        
+
 
         return $result;
     }

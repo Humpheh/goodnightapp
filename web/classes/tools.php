@@ -1,8 +1,10 @@
 <?php
 
+
+
 $stmt = DB::get()->query('SELECT session_soberby FROM session WHERE session_id = '.Logins::getCurrentSession());
-    $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $end = $array[0]['session_soberby'];
+$array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$end = $array[0]['session_soberby'];
 
 
 
@@ -122,19 +124,14 @@ class Tools {
 
         $result = $dtime + ($max / $pv1) + ($hangover / ($count * 16)) - ($water / 4000);
 
-        echo $result . ' ';
-        echo $dtime . ' ';
-        echo $max . ' ';
-        echo $pv1 . ' ';
-        echo $hangover . ' ';
 
-        echo $count . ' '; 
-        echo $t . ' '; 
         
         $sleep = $end - $latest;
             if ($sleep < 4.0) $sleep = 4.0;
 
-
+        echo $result . ' '; 
+        echo ($pv2 + ($sleep - 3)/6.0); 
+        
         $result /= ($pv2 + ($sleep - 3)/6.0);
         
         

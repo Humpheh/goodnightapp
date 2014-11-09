@@ -37,6 +37,7 @@
     maxBac = <?php echo $maxbac ?>;
     $(document).ready(function() {
         var graph = DrunkGraph('drunkChart');
+        $('drunkChart').html("");
         graph.draw();
         //DrunkGraph('hangoverChart').draw();
     });

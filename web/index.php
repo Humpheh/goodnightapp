@@ -70,7 +70,7 @@ $("document").ready(function() {
 <div style="padding-top:13%;" class="container">
                 <center><h1 style="font-size:80px;font-weight:bold;font-style:italic;color:rgb(195, 193, 193);">Good night.</h1>
                   <p style="padding-bottom:30px;color:rgb(195, 193, 193);">For good nights, and great mornings.</p>
-                <span style="font-size:30px;"><a style="cursor:pointer;" id="loginBtn">Get Started</a></span>
+                <span style="font-size:30px;"><a class="btn btn-default" style="cursor:pointer;" id="loginBtn">Get Started</a></span>
               </center>
             </div>
 </div>
@@ -86,8 +86,8 @@ $("document").ready(function() {
                     <div class="form-group" style="padding-bottom: 30px;">
                         <input type="password" name="password" placeholder="Password" id="password" class="form-control"/>
                     </div>
-                    <center><span style="font-size:30px;"><a style="cursor:pointer;" onclick="document.forms[0].submit()" id="loginBtn">Login</a></span><br>
-                    <span style="font-size:20px;"><a href="register.php">Register</a></span></center>
+                    <center><a class="btn ibtn btn-default" style="cursor:pointer;font-size:20px;" onclick="document.forms[0].submit()" id="loginBtn">Login</a><br>
+                    <a class="btn btn-primary ibtn" style="font-size:17px;margin-top:10px;" href="register.php">Register</a></center>
                 </form>
 </div>
 </div>

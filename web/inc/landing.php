@@ -1,8 +1,11 @@
 <div id="landing">
 <div class="valign1" style="padding-bottom: 15px;" >
     <div>
-        <span style="top: 5px;position: relative;left: 5px;"><a href="logout.php">Logout</a></span><center>
-        <span style="padding-bottom:15px;font-weight: bold;font-style: italic;font-size:20px;color:rgb(195, 193, 193);">Welcome back <?php echo Logins::getCurrentUsername(); ?>.</span><br>
+        <span style="top: 5px;position: relative;left: 5px;">
+            <a href="logout.php">Logout</a>
+        </span>
+        <center>
+            <span style="padding-bottom:15px;font-weight: bold;font-style: italic;font-size:20px;color:rgb(195, 193, 193);">Welcome back <b><?php echo Logins::getCurrentUsername(); ?></b>.</span><br>
         </center>
     </div>
 </div>
@@ -17,7 +20,7 @@
     }
 </style>
 
-<div style="height:65%;overflow:scroll;" class="session-list">
+<div style="height:65%;overflow:scroll;overflow-x:hidden;" class="session-list">
     <?php
 
     $stmt = DB::get()->prepare("SELECT * FROM session WHERE session_user_id = ?
@@ -32,11 +35,11 @@
         ?>
 
         <a href="view.php?id=<?php echo $row['session_id']; ?>" class="row session valign">
-            <div class="col-xs-9" style="padding:0;color:white;">
+            <div class="col-xs-8" style="padding:0;color:white;">
                 <span style="font-size:30px;line-height:0.95em;"><?php echo $date; ?></span><br/>
                 <?php echo $time; ?>
             </div>
-            <div class="col-xs-3" style="padding:0;text-align:right;color:rgb(200,200,200);">
+            <div class="col-xs-4" style="padding:0;text-align:right;color:rgb(200,200,200);">
                 <span style="font-size:25px;line-height:0.95em;">
                     <?php echo $row['session_calories']; ?> / <?php echo $row['session_unit']; ?>
                 </span><br/>

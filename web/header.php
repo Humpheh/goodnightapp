@@ -27,6 +27,10 @@
 					e.preventDefault();
 					$.post( "action/removelastdrink.php").done(function( data ) {
 						$('#history').html(data);
+
+						var graph = DrunkGraph('drunkChart');
+						$('#drunkChart').html("");
+						graph.draw();
 					});
 				});
 			});

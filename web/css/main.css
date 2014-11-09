@@ -88,9 +88,11 @@ body {
     box-align:center;
 }
 
-.btn{
-    padding-right:20% !important;
-    padding-left:20% !important;
+.ibtn{
+    max-width: 50%;
+    width:100%;
+    /*padding-right:20% !important;
+    padding-left:20% !important;*/
 }
 
 
@@ -192,7 +194,7 @@ body{
 .drink{
     -webkit-transition: border ease-in-out 0.1s;
     transition: border ease-in-out 0.1s;
-    border: 0px solid white;
+    border: 2px solid white;
     position: relative;
     margin: 0 10px;
     border-radius: 75px;
@@ -229,5 +231,11 @@ body{
 }
 
 .jqplot-target{
-    background: red;
+    margin: 0 15px;
+
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.jqplot-title{
+    display: none;
 }

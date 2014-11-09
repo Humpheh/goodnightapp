@@ -40,11 +40,11 @@ if (   !empty($_POST['password']) && !empty($_POST['username'])
        pagination: true, // You can either show or hide the pagination. Toggle true for show, false for hide.
        updateURL: false // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
     });
-    
+
 });
 
 function init() {
-    
+
     // start up after 2sec no matter what
     window.setTimeout(function(){
         start();
@@ -53,16 +53,16 @@ function init() {
 
 // fade in experience
 function start() {
-    
+
     $('body').removeClass("loading").addClass('loaded');
-    
+
 }
 
 $(window).load(function() {
-    
+
     // fade in page
     init();
-    
+
 });
 </script>
 <div id="register">
@@ -88,6 +88,7 @@ $(window).load(function() {
     </div>
     <input type="submit" name="register" class="btn btn-primary btn-lg btn-block"/>
 </form>
+<a href="index.php" style="width:70%;margin:auto;display:block;" class="btn btn-default">I already have an account</a>
 </div>
 </div>
 <?php require 'footer.php'; ?>

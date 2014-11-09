@@ -1,15 +1,5 @@
 <?php
 
-<<<<<<< Updated upstream
-
-
-$stmt = DB::get()->query('SELECT session_soberby FROM session WHERE session_id = '.Logins::getCurrentSession());
-$array = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$end = $array[0]['session_soberby'];
-
-=======
->>>>>>> Stashed changes
-
 
 class Tools {
 
@@ -131,7 +121,7 @@ class Tools {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $pv1 = 0.2;
-        $pv2 = 1.6;
+        $pv2 = 2.2;
 
         $max = -1;
         $earliest = -1;
@@ -156,44 +146,17 @@ class Tools {
         if ($t < 1 ) $t = 1;
         $dtime = $w * (1 / $t);
 
-
-
-        $result = $dtime + ($max / $pv1) + ($hangover / ($count * 16)) - ($water / 4000);
-
-
-<<<<<<< Updated upstream
-        
-=======
-        echo $count . ' ';
-        echo $t . ' ';
-
->>>>>>> Stashed changes
         $sleep = $end - $latest;
             if ($sleep < 4.0) $sleep = 4.0;
 
-        echo $sleep; 
-        echo ($pv2 + ($sleep - 3)/6.0); 
-        
-        $result /= ($pv2 + ($sleep - 3)/6.0);
-<<<<<<< Updated upstream
-        
-        echo result . ' '; 
-        
-        
-        
-        
-        
-        
-=======
+
+        $result = ($dtime + ($max / $pv1) + ($hangover / ($count * 16)) - ($water / 4000));
 
 
 
+    //    echo $result . ' ';
+    //    echo ($pv2 + ($sleep - 3)/6.0) . ' ';
 
-
-
->>>>>>> Stashed changes
-
-
-        return $result;
+        return $result / ($pv2 + ($sleep - 3)/6.0);
     }
 }

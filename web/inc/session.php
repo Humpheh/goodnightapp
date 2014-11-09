@@ -75,20 +75,22 @@ body{
         MENU <span id="menu-button" style="padding-left:5px;vertical-align:-2px;" class="glyphicon glyphicon-chevron-down"></span>
     </a>
 </div>
-<div style="text-shadow:0 1px 0 rgba(0,0,0,0.5);width:100%;margin:0;height:10%;background:rgb(40,40,40);font-size:20px;" class="row">
+<div style="text-shadow:0 1px 0 black;width:100%;margin:0;height:10%;background:rgb(40,40,40);font-size:20px;" class="row">
     <div style="height:100%;color:white;padding:0;text-align:center;" class="col-xs-6 vhalign">
-        <div style="font-size:25px;line-height:0.9em;height:60%;width:90%;background:red;">
-            <div style="width:<?php print 100*Tools::hangoverness(Logins::getCurrentSession()); ?>%;height:100%;background:blue;">
-                <?php print 100*Tools::hangoverness(Logins::getCurrentSession()); ?>
+        <div style="position:relative;font-size:16px;height:60%;width:90%;background:gray;">
+            <div style="width:<?php print 100*Tools::hangoverness(Logins::getCurrentSession()); ?>%;height:100%;background:rgb(120,70,70);">
+                <div style="position:absolute;left:10px;top:50%;line-height:0;">
+                    Hangover <?php print round(100*Tools::hangoverness(Logins::getCurrentSession()), 2); ?>%
+                </div>
             </div>
         </div>
     </div>
     <?php $uStats = Tools::calcStatsUser(Logins::getCurrentUserID()); ?>
     <div id="tot-units" style="height:100%;color:white;background:rgb(60,60,60);padding:0;text-align:center;" class="col-xs-3 vhalign fader">
-        <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $uStats['units']; ?></span><br/>
+        <span class="value" style="font-size:20px;line-height:0.9em;"><?php echo $uStats['units']; ?></span><br/>
         <span style="font-size:15px;line-height:0.9em;">total units</span></div>
     <div id="tot-calories" style="height:100%;color:white;border:1px solid rgb(50,50,50);text-align:center;padding:0;" class="col-xs-3 vhalign fader">
-        <span class="value" style="font-size:25px;line-height:0.9em;"><?php echo $uStats['calories']; ?></span><br/>
+        <span class="value" style="font-size:20px;line-height:0.9em;"><?php echo $uStats['calories']; ?></span><br/>
         <span style="font-size:15px;line-height:0.9em;">total cal</span></div>
 </div>
 

@@ -8,6 +8,7 @@ if (!isset($_GET['id'])){
     exit();
 }
 $id = intval($_GET['id']);
+Logins::setTempSession($id);
 $stats = Tools::calcStats($id);
 
 $stmt = DB::get()->prepare("SELECT * FROM session WHERE session_id = ?");
@@ -25,7 +26,7 @@ body{
 }
 </style>
 <div class="first graph-holder" style="position:relative;">
-    <?php //include 'inc/graph.php' ?>
+    <?php include 'inc/graph.php' ?>
 </div>
 
 <script type="text/javascript">

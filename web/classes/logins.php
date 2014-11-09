@@ -2,6 +2,8 @@
 
 class Logins {
 
+    private static $tempsession;
+
     /**
      * For hashing a password into unreadable form.
      * @return string of hashed password
@@ -169,7 +171,16 @@ class Logins {
         $_SESSION['sessionid'] = $newid;
     }
 
+    public static function setTempSession($tempid){
+        Logins::$tempsession = $tempid;
+    }
+
+    public static function isSessionTemp(){
+        return (isset(Logins::$tempsession));
+    }
+
     public static function getCurrentSession(){
+        if (isset(Logins::$tempsession)) return Logins::$tempsession;
         if (!isset($_SESSION['sessionid'])) return NULL;
         return $_SESSION['sessionid'];
     }

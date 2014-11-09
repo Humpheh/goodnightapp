@@ -43,7 +43,7 @@ class Tools {
         foreach ($result as $row){
 
             $out .= '<div class="history-item">';
-            if($row == reset($result) && $id == Logins::getCurrentSession()){
+            if(!Logins::isSessionTemp()){
                 $out .= '<a href="#" class="x remove-last-button">
                 <div class="vhalign"><span class="glyphicon glyphicon-remove"></span></div>
                 </a>';
@@ -121,9 +121,9 @@ class Tools {
         echo $max . ' ';
         echo $pv1 . ' ';
         echo $hangover . ' ';
-        echo $count . ' '; 
-        echo $t . ' '; 
-        
+        echo $count . ' ';
+        echo $t . ' ';
+
 
         $result /= ($pv2 + ($t-3)/6);
 

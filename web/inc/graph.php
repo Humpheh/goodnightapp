@@ -5,10 +5,10 @@
         $top = 0.9 * $sum;
         $bottom = $bodyweight * $BW * $MR;
 
-        return $top/$bottom + $start;
+        return $top/$bottom;
     }
 
-    $stmt = DB::get()->query('SELECT SUM(sessdr_volume*(drink_percent/8))*12.7 as sum, MAX(sessdr_time) as startt FROM sessiondrink LEFT JOIN drink ON drink_id = sessdr_drink_id WHERE sessdr_id = '.Logins::getCurrentSession().';');
+    $stmt = DB::get()->query('SELECT SUM(sessdr_volume*(drink_percent/8))/12.7 as sum, MAX(sessdr_time) as startt FROM sessiondrink LEFT JOIN drink ON drink_id = sessdr_drink_id WHERE sessdr_id = '.Logins::getCurrentSession().';');
     $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $drinkingStart = new DateTime($array[0]['startt']);
     $drinkingSum = $array[0]['sum'];

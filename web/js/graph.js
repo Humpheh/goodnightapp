@@ -40,8 +40,9 @@ var DrunkGraph = function (divElement) {
                 endDateTime = drink_time;
             }
         }
-        if (endOfAlcohol != null && endOfAlcohol > endDateTime)
-            endDateTime = endOfAlcohol;
+        //alert(endOfAlcohol);
+        //if (endOfAlcohol != null && endOfAlcohol > endDateTime)
+        endDateTime = new Date( endDateTime.getTime() + 60*60*1000*2 );
 
         var holeDuration =  endDateTime.getTime() - startDateTime.getTime();
         startDateTime = new Date(startDateTime.getTime() - holeDuration * 0.1);

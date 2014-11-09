@@ -8,6 +8,7 @@
 	<head>
 		<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
 		<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/jquery-ui.min.css" />
 		<link rel="stylesheet" href="css/jquery-ui.structure.min.css" />
 		<link rel="stylesheet" href="css/main.css" />

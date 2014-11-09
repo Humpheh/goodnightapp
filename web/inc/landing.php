@@ -1,15 +1,11 @@
-<div style="height:8%;background:rgb(60,60,60);color:white;" class="valign" >
-    <div style="padding-left:15px;">
-        You are logged in as <?php echo Logins::getCurrentUsername(); ?>.
-        <a href="logout.php" class="btn btn-primary" style="margin-left:10px;">Logout</a>
+<div id="landing">
+<div class="valign1" style="padding-bottom: 15px;" >
+    <div>
+        <span style="top: 5px;position: relative;left: 5px;"><a href="logout.php">Logout</a></span><center>
+        <span style="padding-bottom:15px;font-weight: bold;font-style: italic;font-size:30px;color:rgb(195, 193, 193);">Welcome back <?php echo Logins::getCurrentUsername(); ?>.</span><br>
+        </center>
     </div>
 </div>
-<div style="height:42%;">
-    <a href="action/newsession.php" style="background:brown;display:table;width:100%;height:100%;text-align:center;">
-        <span style="color:white;display:table-cell;vertical-align:middle;font-size:80px;" class="glyphicon glyphicon-plus"></span>
-    </a>
-</div>
-
 <style>
     .session-list .session{
         background: rgb(50, 50, 50);
@@ -48,4 +44,11 @@
 
         <?php
     } ?>
+</div>
+    <div style="position:fixed;bottom:4%;width:100%;">
+    <a href="action/newsession.php" style="display:table;width:100%;height:100%;text-align:center;">
+        <center><span style="color:#428bca;font-size:60px;" class="glyphicon glyphicon-plus"></span></center>
+        <!--<span style="color:#428bca;vertical-align:middle;font-size:80px;" class="glyphicon glyphicon-plus">Start Session</span>-->
+    </a>
+</div>
 </div>

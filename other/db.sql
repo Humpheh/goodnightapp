@@ -14,6 +14,7 @@ CREATE TABLE session (
     session_timefinish TIMESTAMP NULL DEFAULT NULL,
     session_calories INT NULL,
     session_unit INT NULL,
+    session_soberby TIMESTAMP NULL,
 
     FOREIGN KEY (session_user_id)
         REFERENCES user(user_id)

@@ -19,7 +19,6 @@
         background: rgb(40, 40, 40);
     }
 </style>
-
 <div style="height:65%;overflow:scroll;overflow-x:hidden;" class="session-list">
     <?php
 
@@ -50,10 +49,25 @@
         <?php
     } ?>
 </div>
+
+<form action="action/newsession.php" method="POST" style="color:white;font-size:17px;text-align:center;padding:10px;">
+    I want to be sober by
+    <select name="hr">
+        <option value="-1">-</option>
+        <?php for ($i = 0; $i < 24; $i++) echo '<option value="'.$i.'">' . $i . '</option>'; ?>
+    </select>
+    <select name="min">
+        <option value="-1">-</option>
+        <?php for ($i = 0; $i < 60; $i+=15) echo '<option value="'.$i.'">' . $i . '</option>'; ?>
+    </select>
+    tomorrow.
+
     <div style="position:fixed;bottom:4%;width:100%;">
-    <a href="action/newsession.php" style="display:table;width:100%;height:100%;text-align:center;">
+        <a style="cursor:pointer;font-size:20px;" onclick="document.forms[0].submit()" style="display:table;width:100%;height:100%;text-align:center;">
         <center><span style="color:#428bca;font-size:60px;" class="glyphicon glyphicon-plus"></span></center>
+
         <!--<span style="color:#428bca;vertical-align:middle;font-size:80px;" class="glyphicon glyphicon-plus">Start Session</span>-->
     </a>
-</div>
+    </div>
+</form>
 </div>

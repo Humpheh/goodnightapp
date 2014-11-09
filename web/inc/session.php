@@ -70,7 +70,7 @@ $stats = Tools::calcStats(Logins::getCurrentSession());
             <div style="vertical-align:middle;">Call taxi</div>
         </a>
         <a href="action/endsession.php">
-            <div style="vertical-align:middle;">Nights over</div>
+            <div style="vertical-align:middle;">End session</div>
         </a>
     </div>
 

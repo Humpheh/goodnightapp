@@ -59,7 +59,7 @@ var DrunkGraph = function (divElement) {
             axes:{
                 xaxis:{
                     renderer:$.jqplot.DateAxisRenderer,
-                    tickOptions:{formatString:'%b %#d, %#I.%M %p'},
+                    tickOptions:{formatString:'%#H:%M'},
                     min: startDateTime,
                     tickInterval: interval
                 }

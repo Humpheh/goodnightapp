@@ -115,6 +115,9 @@ class Tools {
         $result = $dtime + ($max / $pv1) + ($hangover / ($count * 16)) - ($water / 4000);
 
         echo result . ' ';
+        echo $max . ' ';
+        echo $hangover . ' ';
+        
         $result /= ($pv2 + ($t-3)/6);
         
 

@@ -8,7 +8,7 @@ var DrunkGraph = function (divElement) {
 
     var getDataFromServer = function() {
         $.ajax({
-            url: 'action/get_session_drinks.php'
+            url: 'action/get_session_drinks.php?id=' + sid
         }).success(function(data) {
             console.log(data);
             setData(data);

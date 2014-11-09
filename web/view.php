@@ -20,7 +20,9 @@ require 'header.php';
 ?>
 
 <div class="first graph-holder" style="position:relative;">
-    <?php //include 'inc/graph.php' ?>
+    <?php
+    include 'inc/graph.php';
+    ?>
 </div>
 
 <script type="text/javascript">

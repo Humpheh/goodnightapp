@@ -1,4 +1,5 @@
 <?php
+
     function getEndOFDrinking($sum, $gender, $bodyweight, $start) {
         $BW = ($gender == "female") ? 0.49 : 0.58;
         $MR = ($gender == "female") ? 0.017 : 0.015;
@@ -8,7 +9,7 @@
         return $top/$bottom + $start;
     }
 
-    $stmt = DB::get()->query('SELECT SUM(sessdr_volume*(drink_percent/8))*12.7 as sum, MAX(sessdr_time) as startt FROM sessiondrink LEFT JOIN drink ON drink_id = sessdr_drink_id WHERE sessdr_id = '.Logins::getCurrentSession().' ORDER BY sessdr_time ASC ;');
+    $stmt = DB::get()->query('SELECT SUM(sessdr_volume*(drink_percent/8))*12.7 as sum, MAX(sessdr_time) as startt FROM sessiondrink LEFT JOIN drink ON drink_id = sessdr_drink_id WHERE sessdr_id = '.$id.' ORDER BY sessdr_time ASC ;');
     $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $drinkingStart = new DateTime($array[0]['startt']);
     $drinkingSum = $array[0]['sum'];
@@ -25,6 +26,8 @@
 <script type="text/javascript" src="js/plotting/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
 <script type="text/javascript" src="js/plotting/plugins/jqplot.categoryAxisRenderer.min.js"></script>
 <script type="text/javascript" src="js/plotting/plugins/jqplot.barRenderer.min.js"></script>
+
+<script type="text/javascript"> var sid = <?php echo $id; ?>; </script>
 <script src="js/graph.js"></script>
 <script>
     endOfAlcohol = new Date("<?php echo $end; ?>");

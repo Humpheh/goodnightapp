@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../init.php';
 
-$sessionId = Logins::getCurrentSession();
+$sessionId = intval($_GET['id']);
 
 $stmt = DB::get()->query('SELECT * FROM sessiondrink LEFT JOIN drink ON drink_id = sessdr_drink_id WHERE sessdr_session_id = ' . $sessionId . ' ORDER BY sessdr_time;');
 

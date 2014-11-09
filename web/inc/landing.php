@@ -49,7 +49,6 @@
         <?php
     } ?>
 </div>
-
 <form action="action/newsession.php" method="POST" style="color:white;font-size:17px;text-align:center;padding:10px;">
     I want to be sober by
     <select name="hr">

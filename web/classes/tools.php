@@ -109,7 +109,7 @@ class Tools {
         $w = $count/4;
 
         $t = (($latest+1 - $earliest)/3600);
-        if ($t <= 1 ) $t = 1;
+        if ($t < 1 ) $t = 1;
         $dtime = $w * (1 / $t);
 
 
@@ -124,8 +124,16 @@ class Tools {
         echo $count . ' '; 
         echo $t . ' '; 
         
+        $sleep = ;
+            if ($sleep < 4.0) $sleep = 4.0;
 
-        $result /= ($pv2 + ($t-3)/6);
+        $result /= ($pv2 + ($sleep - 3)/6.0);
+        
+        
+        
+        
+        
+        
 
 
         return $result;

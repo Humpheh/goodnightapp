@@ -24,7 +24,7 @@ $stats = Tools::calcStats(Logins::getCurrentSession());
 </script>
 <script src="js/session.js" type="text/javascript"></script>
 
-<div style="overflow-y: hidden;background:rgb(240,240,240);">
+<div style="overflow-y: hidden;background-color:rgba(240,240,240,0.5);">
 <div class="valign" style="height:30%;overflow-X: visible;">
     <div style="white-space: nowrap;display:inline-block;">
         <?php

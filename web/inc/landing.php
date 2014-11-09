@@ -75,7 +75,7 @@ body{
     </select>
     tomorrow.
 
-    <div style="position:fixed;bottom:4%;width:100%;">
+    <div style="position:fixed;bottom:3%;width:100%;">
         <center>
         <a class="btn ibtn btn-default" style="cursor:pointer;font-size:20px;" onclick="document.forms[0].submit()">
             Start Session

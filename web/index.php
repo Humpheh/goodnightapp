@@ -67,18 +67,19 @@ $("document").ready(function() {
   font-weight:700;} 
 </style>
 
-<div class="top">
+<div id="home" class="top">
 
 <div style="padding-top:13%;" class="container">
-                <center><h1 style="padding-bottom:30px;font-size:100px;font-weight:bold;font-style:italic;color:black;">Good night.</h1>
-                <span style="font-size:30px;"><a style="cursor:pointer;" id="loginBtn">Login</a> <i class="fa fa-beer"></i> <a href="register.php">Register</a></span>
+                <center><h1 style="font-size:80px;font-weight:bold;font-style:italic;color:rgb(195, 193, 193);">Good night.</h1>
+                  <p style="padding-bottom:30px;color:rgb(195, 193, 193);;">For good nights, and great mornings.</p>
+                <span style="font-size:30px;"><a style="cursor:pointer;" id="loginBtn">Get Started</a></span>
               </center>
             </div>
 </div>
-<div class="middle">
+<div id="login"  class="middle">
 
 <div style="padding-top:15%;padding-right:20%;padding-left:20%;"  class="container">
-<center><b><h1 style = "padding-bottom:30px;font-weight: bold;font-style: italic;font-size:60px;">Login </h1></b></center>
+<center><b><h1 style = "padding-bottom:30px;font-weight: bold;font-style: italic;font-size:50px;color:rgb(195, 193, 193);">Login </h1></b></center>
 
                 <form method="POST" role="form">
                     <div class="form-group">
@@ -87,7 +88,8 @@ $("document").ready(function() {
                     <div class="form-group" style="padding-bottom: 30px;">
                         <input type="password" name="password" placeholder="Password" id="password" class="form-control"/>
                     </div>
-                    <div style="padding-right:20%;padding-left:20%;"><input type="submit" name="login" value="Login" class="btn btn-block btn-primary"/></div>
+                    <center><div style="padding-right:20%;padding-left:20%;"><input style="background-color:transparent;border:none;color:#428bca;font-size:30px;" type="submit" name="login" value="Login" class="btn btn-block btn-primary"/></div>
+                    <span style="font-size:20px;"><a href="register.php">Register</a></span></center>
                 </form>
 </div>
 </div>

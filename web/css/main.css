@@ -7,6 +7,24 @@ body {
 
 }
 
+#home{
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#login{
+        background-image: url('background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+}
+
+.btn-primary:hover {
+  text-decoration: underline;
+}
+
 .valign{
     /* Internet Explorer 10 */
     display:-ms-flexbox;

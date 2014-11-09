@@ -15,7 +15,8 @@ var DrunkGraph = function (divElement) {
             drawGraph();
         });
     };
-
+    var ultimateMax;
+    var ultimateTime;
     var setData = function (data) {
         var drink = null;
         var drink_time = null;
@@ -42,9 +43,9 @@ var DrunkGraph = function (divElement) {
             if (userMaxAlc < ebac_after )
                 userMaxAlc = ebac_after;
         }
-
+        ultimateMax = userMaxAlc;
         endDateTime = new Date( endDateTime.getTime() + 60*60*1000*2 );
-
+        ultimateTime = endDateTime;
         var holeDuration =  endDateTime.getTime() - startDateTime.getTime();
         startDateTime = new Date(startDateTime.getTime() - holeDuration * 0.1);
         interval = parseInt((endDateTime.getTime() - startDateTime.getTime())/60/60) ;
@@ -53,13 +54,12 @@ var DrunkGraph = function (divElement) {
         worstedBACLine = [];
         maxAlcohol = ((endOfAlcohol.getTime() - startTime.getTime()) / 1000/60/60)* 0.017;
         maxAlcoholUser = (userMaxAlc > maxAlcohol) ? userMaxAlc: maxAlcohol;
-        console.log(maxAlcohol);
-        worstedBACLine[ worstedBACLine.length ] = [currentBACLine[0][0],maxAlcohol, null];
+        worstedBACLine[ worstedBACLine.length ] = [startDateTime,maxAlcohol, null];
         worstedBACLine[ worstedBACLine.length ] = [endOfAlcohol, 0, null];
-        maxLine[ maxLine.length ] = [startTime, maxAlcoholUser, null];
+        maxLine[ maxLine.length ] = [startDateTime, maxAlcoholUser, null];
         maxLine [ maxLine.length ] = [endOfAlcohol, maxAlcoholUser, null];
 
-        bestBACLine [ bestBACLine.length ] = [startTime, maxBac, null];
+        bestBACLine [ bestBACLine.length ] = [startDateTime, maxBac, null];
         bestBACLine [ bestBACLine.length ] = [endOfAlcohol, maxBac, null];
     };
 
@@ -67,15 +67,31 @@ var DrunkGraph = function (divElement) {
         $.jqplot(divElement, [maxLine, worstedBACLine,currentBACLine, bestBACLine], {
             title:'EBAC',
             seriesColors: ['#F24c4f', '#3cb878', '#FFFFFF', '#fff568'],
+            axesDefaults: {
+                labelOptions: {
+                    fontFamily: 'Helvetica Neue',
+                    textColor: '#ffffff'
+                },
+                tickOptions: {
+                    fontFamily: 'Helvetica Neue',
+                    textColor: '#ffffff'
+                }
+            },
             axes:{
                 xaxis:{
                     renderer:$.jqplot.DateAxisRenderer,
                     tickOptions:{formatString:'%#H:%M'},
                     min: startDateTime,
+                    max: ultimateTime,
+                    label: "Time",
                     tickInterval: interval
                 },
                 yaxis: {
                     min: 0,
+                    max: ultimateMax * 1.1 ,
+                    label: "Estimated BAC",
+                    labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                    tickInterval: 0.1
                 }
             },
             seriesDefaults:{
@@ -89,7 +105,7 @@ var DrunkGraph = function (divElement) {
                 {showMarker:false}
             ],
             grid: {
-                background: '#4b4b4b',
+                background: '#4b4b4b4b',
                 drawGridlines: false
             }
         });

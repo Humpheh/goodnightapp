@@ -30,7 +30,7 @@ body{
         <span class="text">1 Pint</span><br/>
         <span class="ml">500ml</span>
     </div>
-    <div id="info" style="padding:30px;display:none;position:absolute;width:100%;height:100%;top:0;background:rgb(200,200,200);color:black;">
+    <div id="info" style="z-index:7;padding:30px;display:none;position:absolute;width:100%;height:100%;top:0;background:rgb(200,200,200);color:black;">
 
     </div>
 </div>

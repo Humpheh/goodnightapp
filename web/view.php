@@ -26,7 +26,7 @@ body{
 }
 </style>
 <div class="first graph-holder" style="position:relative;">
-    <?php include 'inc/graph.php' ?>
+    <?php $graphid = $id; include 'inc/graph.php' ?>
 </div>
 
 <script type="text/javascript">

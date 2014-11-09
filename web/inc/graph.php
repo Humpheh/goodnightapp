@@ -1,5 +1,6 @@
 <?php
-    $stmt = DB::get()->query('SELECT session_soberby FROM session WHERE session_id = '.Logins::getCurrentSession());
+
+    $stmt = DB::get()->query('SELECT session_soberby FROM session WHERE session_id = '.$graphid);
     $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $max = 0.5;
     $end = $array[0]['session_soberby'];
@@ -32,6 +33,9 @@
 <script type="text/javascript" src="js/plotting/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
 <script type="text/javascript" src="js/plotting/plugins/jqplot.categoryAxisRenderer.min.js"></script>
 <script type="text/javascript" src="js/plotting/plugins/jqplot.barRenderer.min.js"></script>
+<script type="text/javascript">
+var graphid = <?php echo $graphid; ?>; 
+</script>
 <script src="js/graph.js"></script>
 <link rel="stylesheet" type="text/css" href="js/plotting/jquery.jqplot.css" />
 <script>

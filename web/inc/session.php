@@ -21,7 +21,7 @@ body{
 </div>
 
 <div class="first graph-holder" style="position:relative;">
-    <?php include 'graph.php' ?>
+    <?php $graphid = Logins::getCurrentSession(); include 'graph.php' ?>
     <div id="acc-left" class="drink-acceptor vhalign" style="left:0;">
         <span class="text">1/2 Pint</span><br/>
         <span class="ml">300ml</span>

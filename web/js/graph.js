@@ -54,12 +54,13 @@ var DrunkGraph = function (divElement) {
         maxAlcohol = ((endOfAlcohol.getTime() - startTime.getTime()) / 1000/60/60)* 0.017;
         worstedBACLine[ worstedBACLine.length ] = [currentBACLine[0][0],maxAlcohol, null];
         worstedBACLine[ worstedBACLine.length ] = [endOfAlcohol, 0, null];
+        maxLine [ maxLine.length ] = [endOfAlcohol, 0.4, null];
     };
 
     var drawGraph = function() {
-        $.jqplot(divElement, [maxLine, currentBACLine, worstedBACLine, bestBACLine], {
+        $.jqplot(divElement, [maxLine, worstedBACLine,currentBACLine, bestBACLine], {
             title:'EBAC',
-            seriesColors: ['#969696', '#00749F', '#FF0000', '#3BFF00'],
+            seriesColors: ['#FF0000', '#3BFF00', '#00749F', '#FF0000'],
             axes:{
                 xaxis:{
                     renderer:$.jqplot.DateAxisRenderer,
@@ -73,7 +74,9 @@ var DrunkGraph = function (divElement) {
                 pointLabels:{ show:true, location:'s', ypadding:3 }
             },
             series:[
-                {showMarker: false}
+                {showMarker: false, fill: true},
+                {fill: true},
+                {}
             ]
         });
     };

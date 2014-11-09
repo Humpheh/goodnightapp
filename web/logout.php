@@ -4,4 +4,4 @@ include 'init.php';
 
 Logins::logout();
 
-header("Location: login.php");
+header("Location: index.php");
